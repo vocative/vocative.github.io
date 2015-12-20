@@ -1,30 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 	<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
 	<script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-cookies.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
 	<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.deep_purple-indigo.min.css">
+	<script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="style.css">
-</head>
-<body>
-	<div id="smoothalerts"></div>
-	<div id="chat-wrap" ng-app="sampleApp" ng-controller="ChatCtrl">
-		<ul id="messages">
-			<li class="message" ng-repeat="(index,message) in messages" ng-class="{firstline:messages[index-1].from!=message.from}">
-				<span class="from" ng-hide="messages[index-1].from==message.from">{{ message.from }}</span>
-				<span class="content">{{ message.content }}</span>
-			</li>
-		</ul>
-		<form ng-submit="addMessage()">
-			<input type="text" id="username" ng-model="username" placeholder="Your Name">
-			<input type="text" id="newmsg" ng-model="newmsg" placeholder="Message">
-			<input type="submit" value=">">
-		</form>
-	</div>
 	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="app.js"></script>
+</head>
+<body ng-app="sampleApp" ng-controller="ChatCtrl">
+	<div id="smoothalerts"></div>
+	<div id="wrapper" class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+		<div class="mdl-layout__drawer">
+			<span class="mdl-layout-title">Title</span>
+			<nav class="mdl-navigation">
+				<a class="mdl-navigation__link" href="">Link</a>
+				<a class="mdl-navigation__link" href="">Link</a>
+				<a class="mdl-navigation__link" href="">Link</a>
+				<a class="mdl-navigation__link" href="">Link</a>
+			</nav>
+		</div>
+		<header class="mdl-layout__header">
+			<div class="mdl-layout__header-row">
+				<!-- Title -->
+				<span class="mdl-layout-title" ng-bind="room"></span>
+			</div>
+			<div class="mdl-layout-icon"></div>
+		</header>
+		<main>
+			<div id="chat-wrap">
+				<ul id="messages">
+					<li class="message" ng-repeat="(index,message) in messages" ng-class="{firstline:messages[index-1].from!=message.from}">
+						<span class="from">{{ message.from }}</span>
+						<span class="content">{{ message.content }}</span>
+					</li>
+				</ul>
+			</div>
+		</main>
+		<footer class="mdl-layout__header">
+			<form ng-submit="addMessage()">
+				<div class="mdl-textfield mdl-js-textfield">
+					<input id="username" ng-model="username" class="mdl-textfield__input" type="text" pattern="[a-zA-Z ]*">
+					<label class="mdl-textfield__label" for="username">Name...</label>
+					<span class="mdl-textfield__error">Name must be alphabetic!</span>
+				</div>
+				<div class="mdl-textfield mdl-js-textfield">
+					<input id="newmsg" ng-model="newmsg" class="mdl-textfield__input" type="text">
+					<label class="mdl-textfield__label" for="username">Message...</label>
+				</div>
+				<input type="submit" value=">" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+			</form>
+		</footer>
+	</div>
 </body>
 </html>

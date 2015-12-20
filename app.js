@@ -1,13 +1,6 @@
 var app = angular.module("sampleApp", ["firebase"]);
 
 app.factory("ChatRoom", function($firebaseArray) { return function(room) {
-	if(room === undefined){
-		if(QueryString.room !== undefined)
-			room = QueryString.room;
-		else
-			window.location.replace("index.html");
-	}
-	
 	var ref = new Firebase("https://socsem.firebaseio.com/" + room);
 	return $firebaseArray(ref);
 }});
@@ -15,10 +8,12 @@ app.factory("ChatRoom", function($firebaseArray) { return function(room) {
 
 
 app.controller("ChatCtrl", function($scope, ChatRoom) {
-	$scope.messages = ChatRoom();
+	if(QueryString.room !== undefined)
+		$scope.room = QueryString.room;
+	else
+		window.location.replace("index.html");
+	$scope.messages = ChatRoom($scope.room);
 	function scrollToBottom(){
-		console.log($("#messages").prop("scrollHeight"));
-		console.log($("#messages").scrollTop()+$("#messages").height());
 		if($("#messages").scrollTop()+$("#messages").height()+10>$("#messages").prop("scrollHeight"))
 			setTimeout(function(){
 				$("#messages").scrollTop($("#messages").prop("scrollHeight"));

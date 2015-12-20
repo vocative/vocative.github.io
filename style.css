@@ -1,65 +1,56 @@
 body {
   margin: 0;
-  font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
-}
-#chat-wrap{
-	width:60%;
-	height: 70vh;
-	margin-left:auto;
-	margin-right:auto;
-	border: solid 1px #000;
-}
-#newmsg{
-	display:block;
-}
-input#username{
-	width:10em;
-	display:inline;
-}
-input#newmsg{
-	width:40em;
-	display:inline;
-}
-#messages{
-	padding: 0;
-	margin:0;
-	list-style:none;
-	max-height: calc(100% - 1.5em);
-	overflow-y: scroll;
-}
-#messages .message .from{
-	font-weight:bold;
-	padding:0.3em;
-	display:block;
-	border-top: solid 1px #000;
-}
-#messages .message .content{
-	margin-left: 1em;
-}
-#messages .message.firstline .content{
-	padding-top:400px;
-}
-#smoothalerts{
-	position:fixed;
-	left: 0;
-	top: 0;
-	width: 20%;
-}
-#smoothalerts .alert{
-	padding: 1em;
-	margin:0.5em;
-	border-radius: 0.5em;
-	transition: opacity 2s;
-}
-#smoothalerts .alert.pos{
-	color:#fff;
-	background-color:#0c0;
-}
-#smoothalerts .alert.neut{
-	color:#fff;
-	background-color:#000;
-}
-#smoothalerts .alert.neg{
-	color:#fff;
-	background-color:#c00;
-}
+  font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif; }
+
+#chat-wrap {
+  height: 70vh;
+  margin-left: auto;
+  margin-right: auto;
+  border: solid 1px #000; }
+
+#newmsg {
+  display: block; }
+
+#messages {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  max-height: calc(100% - 1.5em);
+  overflow-y: scroll; }
+
+#messages .message .from {
+  font-weight: bold;
+  padding: 0.3em;
+  display: block;
+  border-top: solid 1px #000; }
+
+#messages .message .content {
+  margin-left: 1em; }
+
+#messages .message.firstline .content {
+  padding-top: 400px; }
+
+#smoothalerts {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 20%; }
+  #smoothalerts .alert {
+    padding: 1em;
+    margin: 0.5em;
+    border-radius: 0.5em;
+    transition: opacity 2s; }
+  #smoothalerts .alert.pos {
+    color: #fff;
+    background-color: #0c0; }
+  #smoothalerts .alert.neut {
+    color: #fff;
+    background-color: #000; }
+  #smoothalerts .alert.neg {
+    color: #fff;
+    background-color: #c00; }
+
+footer form {
+  padding-left: 20%; }
+
+/*# sourceMappingURL=style.css.map */
