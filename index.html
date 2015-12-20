@@ -1,0 +1,11 @@
+<form id="roomform">
+	<input type="text" id="roomname">
+	<input type="submit" value="Enter room">
+</form>
+<script>
+	document.getElementById("roomform").onsubmit=function(){
+		if(document.getElementById("roomname").value)
+			window.location.assign("chat.html?room="+document.getElementById("roomname").value);
+		return false;
+	};
+</script>
