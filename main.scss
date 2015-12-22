@@ -1,21 +1,30 @@
+$mdl-red: #F44336;
+$mdl-pink: #E91E63;
+$mdl-purple: #9C27B0;
+$mdl-deep-purple: #673AB7;
+$mdl-indigo: #3F51B5;
+$mdl-blue: #2196F3;
+
 body {
   margin: 0;
   font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
 }
+main{
+	height: calc(100vh-70px-64px);
+	overflow-y:scroll;
+}
 #chat-wrap{
-	height: 70vh;
 	margin-left:auto;
 	margin-right:auto;
-	border: solid 1px #000;
 }
 #newmsg{
 	display:block;
 }
 #messages{
-	padding: 0;
+	padding: 0 20%;
 	margin:0;
 	list-style:none;
-	max-height: calc(100% - 1.5em);
+	height: 100%;
 	overflow-y: scroll;
 }
 #messages .message .from{
@@ -54,6 +63,44 @@ body {
 		background-color:#c00;
 	}
 }
+header, footer{
+	position:fixed;
+	width:100%;
+	background-color: $mdl-deep-purple;
+}
+header{
+	top:0;
+}
+footer{
+	bottom:0;
+}
 footer form{
 	padding-left: 20%;
+}
+.mdl-textfield input{
+	background-color: rgba(255,255,255,0.1);
+	border-radius: 1px;
+	text-indent: 3px;
+}
+.mdl-textfield__label::after{
+	background-color: $mdl-blue;
+}
+.mdl-textfield label{
+	color: #999;
+	text-indent: 3px;
+}
+.mdl-button{
+	position:relative;
+	bottom:0.1em;
+	height: 2.07em;
+	margin:0;
+	line-height: 2.07em;
+	vertical-align: baseline;
+	width: 5%;
+}
+#username-wrap{
+	width:15%;
+}
+#newmsg-wrap{
+	width:51.5%;
 }
