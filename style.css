@@ -13,9 +13,10 @@ header, footer {
   position: fixed;
   box-shadow: 0 1.5vmin 1.5vmin rgba(0, 0, 0, 0.3), 0 -1.5vmin 1.5vmin rgba(0, 0, 0, 0.3);
   width: 100%;
-  color: white;
   height: 10vh;
-  line-height: 10vh; }
+  line-height: 10vh;
+  background-color: gray;
+  color: white; }
 
 header {
   top: 0;
@@ -34,17 +35,16 @@ header {
       display: inline-block;
       text-decoration: none;
       padding: 0 1em;
-      color: white; }
+      font-weight: bold;
+      color: inherit; }
     header .logos #logo {
       font-variant: small-caps; }
       @media (max-aspect-ratio: 3 / 4) {
         header .logos #logo {
           display: none; } }
-    header .logos #backbtnsmall {
-      font-weight: bold; }
-      @media (min-aspect-ratio: 3 / 4) {
-        header .logos #backbtnsmall {
-          display: none; } }
+    @media (min-aspect-ratio: 3 / 4) {
+      header .logos #backbtnsmall {
+        display: none; } }
   header .logos:hover {
     background-color: rgba(255, 255, 255, 0.2);
     cursor: pointer; }
@@ -55,7 +55,7 @@ header {
     text-align: center; }
     header h1 a {
       display: inline-block;
-      color: white;
+      color: inherit;
       text-decoration: none;
       padding: 0 2em;
       background-color: transparent;
@@ -156,8 +156,8 @@ footer {
   font-size: 3vh; }
   footer #footermsg {
     display: inline-block;
-    margin-left: 8%;
-    width: 10%;
+    margin-left: calc(18vw - 5em);
+    width: 5em;
     padding-right: 2%;
     font-size: 1.5em;
     vertical-align: top;
@@ -221,7 +221,7 @@ footer {
       width: 10%;
       background-color: #3F51B5;
       font-weight: bold;
-      color: white;
+      color: inherit;
       border: none;
       height: 1.5em;
       line-height: 1.5em;

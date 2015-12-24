@@ -5,11 +5,19 @@ app.factory("ChatRoom", function($firebaseArray) { return function(room) {
 	return $firebaseArray(ref);
 }});
 
-app.controller("ChatCtrl", function($scope, ChatRoom, $cookies) {
+app.controller("ChatCtrl", function($scope, ChatRoom, $cookies, $firebaseObject) {
 	if(QueryString.room !== undefined && QueryString.room)
 		$scope.room = QueryString.room;
 	else
 		window.location.replace("index.html");
+	
+	$firebaseObject(new Firebase("https://socsem.firebaseio.com/" + $scope.room + "/style"))
+		.$bindTo($scope,"style").then(function(){;
+			if(!$scope.style.bgcolor)$scope.style.bgcolor = "gray";
+			if(!$scope.style.altcolor)$scope.style.altcolor = "black";
+			if(!$scope.style.textcolor)$scope.style.textcolor = "white";
+		});
+	
 	$scope.messages = ChatRoom($scope.room);
 	$scope.roomnbsp = $scope.room.replace(" ","\u00A0"); //unicode for nbsp https://stackoverflow.com/questions/12431125/angular-js-return-a-string-with-html-characters-like-nbsp
 	$scope.admin = (QueryString.admin !== undefined);
@@ -17,18 +25,14 @@ app.controller("ChatCtrl", function($scope, ChatRoom, $cookies) {
 	if($cookies.get("username")){
 		$scope.username = $cookies.get("username");
 		$("#newmsg").focus();
-	}
-	else
+	}else
 		$("#username").focus();
+	
 	$scope.$watch("username",function(newval){
 		var exp = new Date();
 		exp.setTime(exp.getTime() + 3600 * 1000); //http://stackoverflow.com/a/3795002
 		$cookies.put("username",newval,{expiry:exp});
 	});
-	
-	$scope.style={};
-	$scope.style.altcolor = "indigo";
-	$scope.style.bgcolor = "#2196F3";
 	
 	$scope.messages.$loaded(function(){$scope.loaded = true;});
 	$scope.messages.$loaded(scrollNewMsg);
