@@ -1,3 +1,8 @@
+/*
+main.scss
+Main Sass stylesheet for SocSem
+*/
+
 $mdl-red: #F44336;
 $mdl-pink: #E91E63;
 $mdl-purple: #9C27B0;
@@ -9,32 +14,47 @@ body {
   margin: 0;
   font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
 }
-header{
+header,footer{
 	position:fixed;
-	top:0;
+	box-shadow: 0 1.5vmin 1.5vmin rgba(0,0,0,0.3), 0 -1.5vmin 1.5vmin rgba(0,0,0,0.3);
 	width:100%;
-	padding:0;
 	color: white;
+	
+	height:10vh;
+	line-height:10vh;
+}
+header{
+	top:0;
+	overflow-y: visible;
+	overflow-x: visible;
 	h2{
+		font-size: 4vh;
 		float: left;
 		position: absolute;
-		a{
+		#logo, #backbtnsmall{
 			display:inline-block;
-			font-variant:small-caps;
-			color:white;
 			text-decoration: none;
-			padding: 0.5em;
+			padding-left: 0.5em;
+			color: white;
+		}
+		#logo{
+			@media(max-aspect-ratio: 3/4){display:none;}
+			font-variant:small-caps;
+		}
+		#backbtnsmall{
+			@media(min-aspect-ratio: 3/4){display:none;}
+			font-weight: bold;
+		}
+		a{
 		}
 		margin:0;
 	}
 	h1{
-		font-size:2em;
+		font-size:6vh;
 		a{
 			display:inline-block;
 			color:white;
 			text-decoration: none;
-			height: 2.5em;
-			line-height:2.5em;
 			padding: 0 2em;
 		}
 		margin:0;
@@ -42,16 +62,14 @@ header{
 	}
 }
 main{
-	box-sizing: border-box;
-	height: calc(100vh-70px-64px);
 	overflow-y:scroll;
-	padding-top: 5em;
-	padding-bottom: 5em;
+	padding-top: 10vh;
+	padding-bottom: 10vh;
 	overflow-y: hidden;
-	height: 100vh;
+	height: 80vh;
 	
-	ul#messages::after{
-		content:"new messages";
+	#newmsgalert{
+		cursor: pointer;
 		background-color: #999;
 		color: white;
 		opacity: 0.6;
@@ -64,31 +82,43 @@ main{
 		padding: 2px;
 		border-top-left-radius: 4px;
 		border-top-right-radius: 4px;
-		bottom:3em;
+		bottom:-2em;
 		transition: bottom 1s;
 	}
-	ul#messages.unread::after{
-		bottom: 5em;
+	&.unread #newmsgalert{
+		bottom: 10vh;
 	}
 	ul#messages{
 		box-sizing: border-box;
-		padding: 0 20%;
 		margin:0;
+		padding:0;
 		list-style:none;
 		height: 100%;
 		overflow-y: scroll;
 		opacity: 0;
-		transition: opacity 2s;
+		transition: opacity 3s;
 		
+		div#msgwrap{
+			box-sizing: border-box;
+			min-height: 80vh;
+			border-top:solid 2.5vmin rgba(0,0,0,0.3);
+			border-bottom:solid 2.5vmin rgba(0,0,0,0.3);
+			@media(max-width:600px){padding: 0;}
+			@media(min-width:600px){padding: 0 20%;}
+		}
+		#loadmsg{
+			text-align:center;
+			padding-top:20vh;
+			font-size:20vmin;
+		}
 		li.message.firstline:first-child{
 			padding-top: 0;
 		}
 		li.message:first-child .from{
-			border-width: 10px;
+			border: none;
 		}
 		li.message:last-child{
 			padding-bottom: 1em;
-			border-bottom: solid 10px #000;
 		}
 		
 		li.message{
@@ -108,34 +138,55 @@ main{
 	}
 }
 footer{
-	position:fixed;
 	bottom: 0;
-	width:100%;
-	height:5em;
+	font-size: 3vh;
+	#footermsg{
+		display: inline-block;
+		@media(max-aspect-ratio: 1/1){display:none;}
+		width: 18%;
+		padding-right:2%;
+		font-size: 1.5em;
+		vertical-align:top;
+		text-align: right;
+	}
 	form{
-		padding-left: 20%;
-		.input input{
+		display: inline-block;
+		@media(min-aspect-ratio: 1/1){width: 60%;}
+		@media(max-aspect-ratio: 1/1){width: 95%;padding-left:5%;}
+		input[type=text]{
 			background-color: transparent;
 			border: none;
-			border-bottom: solid 1px #999;
+			border-bottom: solid 0.3vmin #ccc;
+			/*http://blog.teamtreehouse.com/the-css3-placeholder-pseudo-element*/
+			&::input-placeholder {color: #ccc;}
+			&::-webkit-input-placeholder {color: #ccc;}
+			&:-moz-placeholder { color: #ccc;}
+			&::-moz-placeholder { color: #ccc; }
+			&:-ms-input-placeholder { color: #ccc; }
+		}
+		input[type=text]:focus{
 			outline:none;
 			box-shadow:none;
+			border-bottom: solid 0.6vmin $mdl-indigo;
+			&::input-placeholder {color: #eee;}
+			&::-webkit-input-placeholder {color: #eee;}
+			&:-moz-placeholder { color: #eee;}
+			&::-moz-placeholder { color: #eee; }
+			&:-ms-input-placeholder { color: #eee; }
 		}
-		.input{
+		#username{width:20%;}
+		#newmsg{width:65%;}
+		input[type=submit]{
 			display: inline-block;
-		}
-		.input::after{
-			content:"";
-			width:100%;
-			height:3px;
-			color:$mdl-indigo;
-			display:block;
-			z-index:10000000;
-			position:fixed;
-		}
-		.input input:focus{
-			outline:none;
-			box-shadow:none;
+			width: 10%;
+			background-color: $mdl-indigo;
+			font-weight:bold;
+			color: white;
+			border: none;
+			height: 1.5em;
+			line-height: 1.5em;
+			padding-bottom: 5vmin;
+			vertical-align: baseline;
 		}
 	}
 }

@@ -1,45 +1,61 @@
+/*
+main.scss
+Main Sass stylesheet for SocSem
+*/
 body {
   margin: 0;
   font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif; }
 
-header {
+header, footer {
   position: fixed;
-  top: 0;
+  box-shadow: 0 1.5vmin 1.5vmin rgba(0, 0, 0, 0.3), 0 -1.5vmin 1.5vmin rgba(0, 0, 0, 0.3);
   width: 100%;
-  padding: 0;
-  color: white; }
+  color: white;
+  height: 10vh;
+  line-height: 10vh; }
+
+header {
+  top: 0;
+  overflow-y: visible;
+  overflow-x: visible; }
   header h2 {
+    font-size: 4vh;
     float: left;
     position: absolute;
     margin: 0; }
-    header h2 a {
+    header h2 #logo, header h2 #backbtnsmall {
       display: inline-block;
-      font-variant: small-caps;
-      color: white;
       text-decoration: none;
-      padding: 0.5em; }
+      padding-left: 0.5em;
+      color: white; }
+    header h2 #logo {
+      font-variant: small-caps; }
+      @media (max-aspect-ratio: 3 / 4) {
+        header h2 #logo {
+          display: none; } }
+    header h2 #backbtnsmall {
+      font-weight: bold; }
+      @media (min-aspect-ratio: 3 / 4) {
+        header h2 #backbtnsmall {
+          display: none; } }
   header h1 {
-    font-size: 2em;
+    font-size: 6vh;
     margin: 0;
     text-align: center; }
     header h1 a {
       display: inline-block;
       color: white;
       text-decoration: none;
-      height: 2.5em;
-      line-height: 2.5em;
       padding: 0 2em; }
 
 main {
-  box-sizing: border-box;
-  height: calc(100vh-70px-64px);
   overflow-y: scroll;
-  padding-top: 5em;
-  padding-bottom: 5em;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
   overflow-y: hidden;
-  height: 100vh; }
-  main ul#messages::after {
-    content: "new messages";
+  height: 80vh; }
+  main #newmsgalert {
+    cursor: pointer;
     background-color: #999;
     color: white;
     opacity: 0.6;
@@ -52,26 +68,40 @@ main {
     padding: 2px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
-    bottom: 3em;
+    bottom: -2em;
     transition: bottom 1s; }
-  main ul#messages.unread::after {
-    bottom: 5em; }
+  main.unread #newmsgalert {
+    bottom: 10vh; }
   main ul#messages {
     box-sizing: border-box;
-    padding: 0 20%;
     margin: 0;
+    padding: 0;
     list-style: none;
     height: 100%;
     overflow-y: scroll;
     opacity: 0;
-    transition: opacity 2s; }
+    transition: opacity 3s; }
+    main ul#messages div#msgwrap {
+      box-sizing: border-box;
+      min-height: 80vh;
+      border-top: solid 2.5vmin rgba(0, 0, 0, 0.3);
+      border-bottom: solid 2.5vmin rgba(0, 0, 0, 0.3); }
+      @media (max-width: 600px) {
+        main ul#messages div#msgwrap {
+          padding: 0; } }
+      @media (min-width: 600px) {
+        main ul#messages div#msgwrap {
+          padding: 0 20%; } }
+    main ul#messages #loadmsg {
+      text-align: center;
+      padding-top: 20vh;
+      font-size: 20vmin; }
     main ul#messages li.message.firstline:first-child {
       padding-top: 0; }
     main ul#messages li.message:first-child .from {
-      border-width: 10px; }
+      border: none; }
     main ul#messages li.message:last-child {
-      padding-bottom: 1em;
-      border-bottom: solid 10px #000; }
+      padding-bottom: 1em; }
     main ul#messages li.message .from {
       font-weight: bold;
       padding: 0.3em;
@@ -83,31 +113,71 @@ main {
       padding-top: 1em; }
 
 footer {
-  position: fixed;
   bottom: 0;
-  width: 100%;
-  height: 5em; }
+  font-size: 3vh; }
+  footer #footermsg {
+    display: inline-block;
+    width: 18%;
+    padding-right: 2%;
+    font-size: 1.5em;
+    vertical-align: top;
+    text-align: right; }
+    @media (max-aspect-ratio: 1 / 1) {
+      footer #footermsg {
+        display: none; } }
   footer form {
-    padding-left: 20%; }
-    footer form .input input {
+    display: inline-block; }
+    @media (min-aspect-ratio: 1 / 1) {
+      footer form {
+        width: 60%; } }
+    @media (max-aspect-ratio: 1 / 1) {
+      footer form {
+        width: 95%;
+        padding-left: 5%; } }
+    footer form input[type=text] {
       background-color: transparent;
       border: none;
-      border-bottom: solid 1px #999;
+      border-bottom: solid 0.3vmin #ccc;
+      /*http://blog.teamtreehouse.com/the-css3-placeholder-pseudo-element*/ }
+      footer form input[type=text]::input-placeholder {
+        color: #ccc; }
+      footer form input[type=text]::-webkit-input-placeholder {
+        color: #ccc; }
+      footer form input[type=text]:-moz-placeholder {
+        color: #ccc; }
+      footer form input[type=text]::-moz-placeholder {
+        color: #ccc; }
+      footer form input[type=text]:-ms-input-placeholder {
+        color: #ccc; }
+    footer form input[type=text]:focus {
       outline: none;
-      box-shadow: none; }
-    footer form .input {
-      display: inline-block; }
-    footer form .input::after {
-      content: "";
-      width: 100%;
-      height: 3px;
-      color: #3F51B5;
-      display: block;
-      z-index: 10000000;
-      position: fixed; }
-    footer form .input input:focus {
-      outline: none;
-      box-shadow: none; }
+      box-shadow: none;
+      border-bottom: solid 0.6vmin #3F51B5; }
+      footer form input[type=text]:focus::input-placeholder {
+        color: #eee; }
+      footer form input[type=text]:focus::-webkit-input-placeholder {
+        color: #eee; }
+      footer form input[type=text]:focus:-moz-placeholder {
+        color: #eee; }
+      footer form input[type=text]:focus::-moz-placeholder {
+        color: #eee; }
+      footer form input[type=text]:focus:-ms-input-placeholder {
+        color: #eee; }
+    footer form #username {
+      width: 20%; }
+    footer form #newmsg {
+      width: 65%; }
+    footer form input[type=submit] {
+      display: inline-block;
+      width: 10%;
+      background-color: #3F51B5;
+      font-weight: bold;
+      color: white;
+      border: none;
+      height: 1.5em;
+      line-height: 1.5em;
+      padding-bottom: 5vmin;
+      vertical-align: baseline; }
 
 #smoothalerts {
   position: fixed;

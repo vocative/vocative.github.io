@@ -13,6 +13,7 @@ app.controller("ChatCtrl", function($scope, ChatRoom) {
 	else
 		window.location.replace("index.html");
 	$scope.messages = ChatRoom($scope.room);
+	$scope.roomnbsp = $scope.room.replace(" ","\u00A0"); //unicode for nbsp https://stackoverflow.com/questions/12431125/angular-js-return-a-string-with-html-characters-like-nbsp
 	
 	$scope.style={};
 	$scope.style.bgcolor="#2196F3";
@@ -25,17 +26,6 @@ app.controller("ChatCtrl", function($scope, ChatRoom) {
 	$mdl-blue: #2196F3;
 	*/
 	
-	function scrollToBottom(){
-		setTimeout(function(){
-			$("#messages").scrollTop(getTotalHeight() - getScrollBufferHeight());
-			//updateStretchyScroll();
-		},10);
-	}
-	$(scrollToBottom);
-	function scrollToBottomIfAtBottom(){
-		if($("#messages").scrollTop() + 10 > getTotalHeight() - getScrollBufferHeight())
-			scrollToBottom();
-	}
 	$scope.messages.$loaded(scrollToBottomIfAtBottom);
 	$scope.messages.$watch(scrollToBottomIfAtBottom);
 	$scope.addMessage = function(){
@@ -126,9 +116,42 @@ function updateStretchyScroll(){
 	}
 }*/
 
+
+function scrollToBottom(smoothly){
+	if(smoothly)
+		setTimeout(function(){
+			$("#messages").animate({scrollTop: getTotalHeight() - getScrollBufferHeight()},400);
+			//updateStretchyScroll();
+		},10);
+	else
+		setTimeout(function(){
+			$("#messages").scrollTop(getTotalHeight() - getScrollBufferHeight());
+			//updateStretchyScroll();
+		},10);
+}
+function scrollToBottomIfAtBottom(){
+	if($("#messages").scrollTop() + 10 > getTotalHeight() - getScrollBufferHeight())
+		scrollToBottom();
+	else
+		$("main").addClass("unread");
+}
 $(function(){
 	$("#username").focus();
-	$("ul#messages").css({opacity:1});
+	$("ul#messages").css({opacity:1}).scroll(function(){
+		if($("#messages").scrollTop() + 10 > getTotalHeight() - getScrollBufferHeight()) //same as in scrollToBottomIfAtBottom()
+			$("main").removeClass("unread");
+	});
+	scrollToBottom();
+	$("#newmsgalert").click(function(){
+		scrollToBottom(true);
+	});
+	$(window).focus(function(){
+		if(!$("#username").val())
+			setTimeout(function(){$("#username").focus();},10);
+		else
+			setTimeout(function(){$("#newmsg").focus();},10);
+	});
+	
 	//$("ul#messages").scroll(updateStretchyScroll);
 	//setInterval(updateStretchyScroll,100);
 });

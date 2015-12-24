@@ -15,23 +15,33 @@
 <body ng-app="sampleApp" ng-controller="ChatCtrl">
 	<div id="wrapper">
 		<header ng-style="{'background-color':style.bgcolor}">
-			<h2><a href="index.html">SocSem</a></h2>
-			<h1><a ng-href="chat.html?room={{room}}" ng-bind="room"></a></h1>
+			<h2>
+			<a id="logo" href="index.html">SocSem</a>
+			<a id="backbtnsmall" href="index.html">&lt;</a>
+			</h2>
+			<h1><a ng-href="chat.html?room={{room}}" ng-bind="roomnbsp"></a></h1>
 		</header>
 		<main>
 			<div id="smoothalerts"></div>
 			<ul id="messages">
-				<li class="message" ng-repeat="(index,message) in messages" ng-class="{firstline:messages[index-1].from!=message.from}">
-					<span class="from" ng-show="messages[index-1].from != message.from">{{ message.from }}</span>
-					<span class="content">{{ message.content }}</span>
-				</li>
+				<div id="msgwrap">
+					<li id="loadmsg" class="message" ng-hide="messages.length">Loading</li>
+					<div>
+						<li class="message" ng-repeat="(index,message) in messages" ng-class="{firstline:messages[index-1].from!=message.from}">
+							<span class="from" ng-show="messages[index-1].from != message.from">{{ message.from }}</span>
+							<span class="content">{{ message.content }}</span>
+						</li>
+					</div>
+				</div>
 			</ul>
+			<span id="newmsgalert">new messages</span>
 		</main>
 		<footer ng-style="{'background-color':style.bgcolor}">
+			<div id="footermsg">Message</div>
 			<form ng-submit="addMessage()">
-				<div class="input"><input id="username" ng-model="username" type="text" placeholder="Name..."></div>
-				<div class="input"><input id="newmsg" ng-model="newmsg" type="text" placeholder="Message..."></div>
-				<input type="submit" value=">">
+				<input id="username" ng-model="username" type="text" placeholder="Name...">
+				<input id="newmsg" ng-model="newmsg" type="text" placeholder="Message..." autocomplete="off">
+				<input type="submit" value="&gt;">
 			</form>
 		</footer>
 	</div>
