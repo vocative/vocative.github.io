@@ -3,12 +3,15 @@ main.scss
 Main Sass stylesheet for SocSem
 */
 
+/*from Material Design Lite*/
 $mdl-red: #F44336;
 $mdl-pink: #E91E63;
 $mdl-purple: #9C27B0;
 $mdl-deep-purple: #673AB7;
 $mdl-indigo: #3F51B5;
+$mdl-light-indigo: #596BCF;/* http://www.hexcolortool.com/ */
 $mdl-blue: #2196F3;
+$mdl-light-blue: #3BB0FF;/* http://www.hexcolortool.com/ */
 
 body {
   margin: 0;
@@ -27,14 +30,12 @@ header{
 	top:0;
 	overflow-y: visible;
 	overflow-x: visible;
-	h2{
-		font-size: 4vh;
-		float: left;
-		position: absolute;
+	font-size: 4vh;
+	.logos{
 		#logo, #backbtnsmall{
 			display:inline-block;
 			text-decoration: none;
-			padding-left: 0.5em;
+			padding: 0 1em;
 			color: white;
 		}
 		#logo{
@@ -45,20 +46,53 @@ header{
 			@media(min-aspect-ratio: 3/4){display:none;}
 			font-weight: bold;
 		}
-		a{
-		}
 		margin:0;
+		position: absolute; left: 0;/*to not uncenter the h1*/
+		background-color: $mdl-blue;
+		transition: background-color 0.5s;
+	}
+	.logos:hover{
+		background-color: $mdl-light-blue;
+		cursor: pointer;
 	}
 	h1{
-		font-size:6vh;
+		font-size: 1.5em;
+		clear: none;
 		a{
 			display:inline-block;
 			color:white;
 			text-decoration: none;
 			padding: 0 2em;
 		}
+		a:hover{
+			background-color: $mdl-blue;
+			transition: background-color 0.5s;
+			background-color: $mdl-light-blue;
+			cursor: pointer;
+		}
 		margin:0;
 		text-align:center;
+	}
+	/*https://css-tricks.com/three-line-menu-navicon/*/
+	.admin-drawer-icon {
+		padding: 0 1.25em;
+		background-color: $mdl-blue;
+		transition: background-color 0.5s;
+		position: absolute;right: 0; /*to not uncenter the h1*/
+	}
+	.admin-drawer-icon:hover{
+		background-color: $mdl-light-blue;
+		cursor: pointer;
+	}
+	.admin-drawer-icon:before {
+		content: "";
+		display: inline-block;
+		width: 1.3em;
+		height: 0.2em;
+		background: white;
+		box-shadow: 
+			0 -0.4em 0 0 white,
+			0 -0.8em 0 0 white;
 	}
 }
 main{
@@ -143,11 +177,18 @@ footer{
 	#footermsg{
 		display: inline-block;
 		@media(max-aspect-ratio: 1/1){display:none;}
-		width: 18%;
+		margin-left: 8%;
+		width: 10%;
 		padding-right:2%;
 		font-size: 1.5em;
 		vertical-align:top;
 		text-align: right;
+		background-color: $mdl-blue;
+		transition: background-color 0.5s;
+	}
+	#footermsg:hover{
+		background-color: $mdl-light-blue;
+		cursor: pointer;
 	}
 	form{
 		display: inline-block;
@@ -155,7 +196,10 @@ footer{
 		@media(max-aspect-ratio: 1/1){width: 95%;padding-left:5%;}
 		input[type=text]{
 			background-color: transparent;
+			outline:none;
+			box-shadow:none;
 			border: none;
+			padding: 0.1em 0.3em;
 			border-bottom: solid 0.3vmin #ccc;
 			/*http://blog.teamtreehouse.com/the-css3-placeholder-pseudo-element*/
 			&::input-placeholder {color: #ccc;}
@@ -168,6 +212,7 @@ footer{
 			outline:none;
 			box-shadow:none;
 			border-bottom: solid 0.6vmin $mdl-indigo;
+			background-color: $mdl-light-blue;
 			&::input-placeholder {color: #eee;}
 			&::-webkit-input-placeholder {color: #eee;}
 			&:-moz-placeholder { color: #eee;}
@@ -185,11 +230,11 @@ footer{
 			border: none;
 			height: 1.5em;
 			line-height: 1.5em;
-			padding-bottom: 5vmin;
+			padding: 0 0 1.6em 0;
 			vertical-align: baseline;
 		}
-		input[type=submit]:focus{
-			opacity: 0.7;
+		input[type=submit]:focus, input[type=submit]:hover{
+			background-color: $mdl-light-indigo;
 			border: none;
 			outline:none;
 		}

@@ -2,6 +2,9 @@
 main.scss
 Main Sass stylesheet for SocSem
 */
+/*from Material Design Lite*/
+/* http://www.hexcolortool.com/ */
+/* http://www.hexcolortool.com/ */
 body {
   margin: 0;
   font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif; }
@@ -17,29 +20,37 @@ header, footer {
 header {
   top: 0;
   overflow-y: visible;
-  overflow-x: visible; }
-  header h2 {
-    font-size: 4vh;
-    float: left;
+  overflow-x: visible;
+  font-size: 4vh;
+  /*https://css-tricks.com/three-line-menu-navicon/*/ }
+  header .logos {
+    margin: 0;
     position: absolute;
-    margin: 0; }
-    header h2 #logo, header h2 #backbtnsmall {
+    left: 0;
+    /*to not uncenter the h1*/
+    background-color: #2196F3;
+    transition: background-color 0.5s; }
+    header .logos #logo, header .logos #backbtnsmall {
       display: inline-block;
       text-decoration: none;
-      padding-left: 0.5em;
+      padding: 0 1em;
       color: white; }
-    header h2 #logo {
+    header .logos #logo {
       font-variant: small-caps; }
       @media (max-aspect-ratio: 3 / 4) {
-        header h2 #logo {
+        header .logos #logo {
           display: none; } }
-    header h2 #backbtnsmall {
+    header .logos #backbtnsmall {
       font-weight: bold; }
       @media (min-aspect-ratio: 3 / 4) {
-        header h2 #backbtnsmall {
+        header .logos #backbtnsmall {
           display: none; } }
+  header .logos:hover {
+    background-color: #3BB0FF;
+    cursor: pointer; }
   header h1 {
-    font-size: 6vh;
+    font-size: 1.5em;
+    clear: none;
     margin: 0;
     text-align: center; }
     header h1 a {
@@ -47,6 +58,28 @@ header {
       color: white;
       text-decoration: none;
       padding: 0 2em; }
+    header h1 a:hover {
+      background-color: #2196F3;
+      transition: background-color 0.5s;
+      background-color: #3BB0FF;
+      cursor: pointer; }
+  header .admin-drawer-icon {
+    padding: 0 1.25em;
+    background-color: #2196F3;
+    transition: background-color 0.5s;
+    position: absolute;
+    right: 0;
+    /*to not uncenter the h1*/ }
+  header .admin-drawer-icon:hover {
+    background-color: #3BB0FF;
+    cursor: pointer; }
+  header .admin-drawer-icon:before {
+    content: "";
+    display: inline-block;
+    width: 1.3em;
+    height: 0.2em;
+    background: white;
+    box-shadow: 0 -0.4em 0 0 white, 0 -0.8em 0 0 white; }
 
 main {
   overflow-y: scroll;
@@ -117,14 +150,20 @@ footer {
   font-size: 3vh; }
   footer #footermsg {
     display: inline-block;
-    width: 18%;
+    margin-left: 8%;
+    width: 10%;
     padding-right: 2%;
     font-size: 1.5em;
     vertical-align: top;
-    text-align: right; }
+    text-align: right;
+    background-color: #2196F3;
+    transition: background-color 0.5s; }
     @media (max-aspect-ratio: 1 / 1) {
       footer #footermsg {
         display: none; } }
+  footer #footermsg:hover {
+    background-color: #3BB0FF;
+    cursor: pointer; }
   footer form {
     display: inline-block; }
     @media (min-aspect-ratio: 1 / 1) {
@@ -136,7 +175,10 @@ footer {
         padding-left: 5%; } }
     footer form input[type=text] {
       background-color: transparent;
+      outline: none;
+      box-shadow: none;
       border: none;
+      padding: 0.1em 0.3em;
       border-bottom: solid 0.3vmin #ccc;
       /*http://blog.teamtreehouse.com/the-css3-placeholder-pseudo-element*/ }
       footer form input[type=text]::input-placeholder {
@@ -152,7 +194,8 @@ footer {
     footer form input[type=text]:focus {
       outline: none;
       box-shadow: none;
-      border-bottom: solid 0.6vmin #3F51B5; }
+      border-bottom: solid 0.6vmin #3F51B5;
+      background-color: #3BB0FF; }
       footer form input[type=text]:focus::input-placeholder {
         color: #eee; }
       footer form input[type=text]:focus::-webkit-input-placeholder {
@@ -176,10 +219,10 @@ footer {
       border: none;
       height: 1.5em;
       line-height: 1.5em;
-      padding-bottom: 5vmin;
+      padding: 0 0 1.6em 0;
       vertical-align: baseline; }
-    footer form input[type=submit]:focus {
-      opacity: 0.7;
+    footer form input[type=submit]:focus, footer form input[type=submit]:hover {
+      background-color: #596BCF;
       border: none;
       outline: none; }
 

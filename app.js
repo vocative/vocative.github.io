@@ -1,4 +1,4 @@
-var app = angular.module("sampleApp", ["firebase"]);
+var app = angular.module("sampleApp", ["firebase", "ngCookies"]);
 
 app.factory("ChatRoom", function($firebaseArray) { return function(room) {
 	var ref = new Firebase("https://socsem.firebaseio.com/" + room);
@@ -7,13 +7,26 @@ app.factory("ChatRoom", function($firebaseArray) { return function(room) {
 
 
 
-app.controller("ChatCtrl", function($scope, ChatRoom) {
+app.controller("ChatCtrl", function($scope, ChatRoom, $cookies) {
 	if(QueryString.room !== undefined)
 		$scope.room = QueryString.room;
 	else
 		window.location.replace("index.html");
 	$scope.messages = ChatRoom($scope.room);
 	$scope.roomnbsp = $scope.room.replace(" ","\u00A0"); //unicode for nbsp https://stackoverflow.com/questions/12431125/angular-js-return-a-string-with-html-characters-like-nbsp
+	$scope.admin = (QueryString.admin !== undefined);
+	
+	if($cookies.get("username")){
+		$scope.username = $cookies.get("username");
+		$("#newmsg").focus();
+	}
+	else
+		$("#username").focus();
+	$scope.$watch("username",function(newval){
+		var exp = new Date();
+		exp.setTime(exp.getTime() + 3600 * 1000); //http://stackoverflow.com/a/3795002
+		$cookies.put("username",newval,{expiry:exp});
+	});
 	
 	$scope.style={};
 	$scope.style.bgcolor="#2196F3";
@@ -136,7 +149,6 @@ function scrollToBottomIfAtBottom(){
 		$("main").addClass("unread");
 }
 $(function(){
-	$("#username").focus();
 	$("ul#messages").css({opacity:1}).scroll(function(){
 		if($("#messages").scrollTop() + 10 > getTotalHeight() - getScrollBufferHeight()) //same as in scrollToBottomIfAtBottom()
 			$("main").removeClass("unread");
