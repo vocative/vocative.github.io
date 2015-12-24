@@ -1,14 +1,12 @@
 var app = angular.module("sampleApp", ["firebase", "ngCookies"]);
 
 app.factory("ChatRoom", function($firebaseArray) { return function(room) {
-	var ref = new Firebase("https://socsem.firebaseio.com/" + room);
+	var ref = new Firebase("https://socsem.firebaseio.com/" + room + "/messages");
 	return $firebaseArray(ref);
 }});
 
-
-
 app.controller("ChatCtrl", function($scope, ChatRoom, $cookies) {
-	if(QueryString.room !== undefined)
+	if(QueryString.room !== undefined && QueryString.room)
 		$scope.room = QueryString.room;
 	else
 		window.location.replace("index.html");
@@ -29,18 +27,12 @@ app.controller("ChatCtrl", function($scope, ChatRoom, $cookies) {
 	});
 	
 	$scope.style={};
-	$scope.style.bgcolor="#2196F3";
-	/*
-	$mdl-red: #F44336;
-	$mdl-pink: #E91E63;
-	$mdl-purple: #9C27B0;
-	$mdl-deep-purple: #673AB7;
-	$mdl-indigo: #3F51B5;
-	$mdl-blue: #2196F3;
-	*/
+	$scope.style.altcolor = "indigo";
+	$scope.style.bgcolor = "#2196F3";
 	
-	$scope.messages.$loaded(scrollToBottomIfAtBottom);
-	$scope.messages.$watch(scrollToBottomIfAtBottom);
+	$scope.messages.$loaded(function(){$scope.loaded = true;});
+	$scope.messages.$loaded(scrollNewMsg);
+	$scope.messages.$watch(scrollNewMsg);
 	$scope.addMessage = function(){
 		if(!$scope.username){
 			smoothAlert("You need a username!",-1);
@@ -90,80 +82,33 @@ function smoothAlert(message, disposition){
 	setTimeout(function(){alertElem.remove();}, 5000);
 }
 
-function getScrollBufferHeight(){
-	//should correspond with ul#messages padding-top and padding-bottom.
-	var heightPx = 0;
-	return heightPx;
-}
-function getTotalHeight(){
-	var heightPx = getScrollBufferHeight();
+function getScrollMax(){
 	var totalHeight = $("ul#messages").prop("scrollHeight") //Get scroll height
-		- $("ul#messages").height() //Account for not scrolling down all the way to the bottom edge, missing by height
-		- 2 * heightPx; //Account for jQuery not counting padding
+		- $("ul#messages").height(); //Account for not scrolling down all the way to the bottom edge, missing by height
 	return totalHeight;
 }
 
-/*var st;
-function updateStretchyScroll(){
-	var heightPx = getScrollBufferHeight();
-	
-	var totalHeight = getTotalHeight();
-	
-	if(st <= heightPx){
-		
-		st = $("ul#messages").scrollTop();
-		if(st < 0) st = 0;
-		
-		st = st * 0.8 + heightPx * 0.2;
-		$("ul#messages").scrollTop(st);
-	}else if(st >= totalHeight - heightPx){
-		var totalHeight = getTotalHeight();
-		
-		st = $("ul#messages").scrollTop();
-		if(st > totalHeight) st = totalHeight;
-		
-		st = st * 0.8 + (totalHeight - heightPx) * 0.2;
-		$("ul#messages").scrollTop(st);
-	}else{
-		st = $("ul#messages").scrollTop();
-	}
-}*/
-
-
 function scrollToBottom(smoothly){
-	if(smoothly)
-		setTimeout(function(){
-			$("#messages").animate({scrollTop: getTotalHeight() - getScrollBufferHeight()},400);
-			//updateStretchyScroll();
-		},10);
-	else
-		setTimeout(function(){
-			$("#messages").scrollTop(getTotalHeight() - getScrollBufferHeight());
-			//updateStretchyScroll();
-		},10);
+	if(smoothly)setTimeout(function(){$("#messages").animate({scrollTop: getScrollMax()},400);},10);
+	else setTimeout(function(){$("#messages").scrollTop(getScrollMax());},10);
 }
-function scrollToBottomIfAtBottom(){
-	if($("#messages").scrollTop() + 10 > getTotalHeight() - getScrollBufferHeight())
-		scrollToBottom();
-	else
-		$("main").addClass("unread");
+function scrollNewMsg(){
+	if($("#messages").scrollTop() + 10 > getScrollMax())scrollToBottom();
+	else $("main").addClass("unread");
 }
 $(function(){
 	$("ul#messages").css({opacity:1}).scroll(function(){
-		if($("#messages").scrollTop() + 10 > getTotalHeight() - getScrollBufferHeight()) //same as in scrollToBottomIfAtBottom()
+		if($("#messages").scrollTop() + 10 > getScrollMax()) //same as in scrollNewMsg()
 			$("main").removeClass("unread");
 	});
+	
 	scrollToBottom();
-	$("#newmsgalert").click(function(){
-		scrollToBottom(true);
-	});
+	$("#newmsgalert").click(function(){scrollToBottom(true);});
+	
 	$(window).focus(function(){
 		if(!$("#username").val())
 			setTimeout(function(){$("#username").focus();},10);
 		else
 			setTimeout(function(){$("#newmsg").focus();},10);
 	});
-	
-	//$("ul#messages").scroll(updateStretchyScroll);
-	//setInterval(updateStretchyScroll,100);
 });

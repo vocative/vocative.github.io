@@ -48,11 +48,11 @@ header{
 		}
 		margin:0;
 		position: absolute; left: 0;/*to not uncenter the h1*/
-		background-color: $mdl-blue;
+		background-color: transparent;
 		transition: background-color 0.5s;
 	}
 	.logos:hover{
-		background-color: $mdl-light-blue;
+		background-color: rgba(255,255,255,0.2);
 		cursor: pointer;
 	}
 	h1{
@@ -63,11 +63,11 @@ header{
 			color:white;
 			text-decoration: none;
 			padding: 0 2em;
+			background-color: transparent;
+			transition: background-color 0.5s;
 		}
 		a:hover{
-			background-color: $mdl-blue;
-			transition: background-color 0.5s;
-			background-color: $mdl-light-blue;
+			background-color: rgba(255,255,255,0.2);
 			cursor: pointer;
 		}
 		margin:0;
@@ -76,12 +76,12 @@ header{
 	/*https://css-tricks.com/three-line-menu-navicon/*/
 	.admin-drawer-icon {
 		padding: 0 1.25em;
-		background-color: $mdl-blue;
+		background-color: transparent;
 		transition: background-color 0.5s;
 		position: absolute;right: 0; /*to not uncenter the h1*/
 	}
 	.admin-drawer-icon:hover{
-		background-color: $mdl-light-blue;
+		background-color: rgba(255,255,255,0.2);
 		cursor: pointer;
 	}
 	.admin-drawer-icon:before {
@@ -141,9 +141,16 @@ main{
 			@media(min-width:600px){padding: 0 20%;}
 		}
 		#loadmsg{
+			opacity: 0.5;
 			text-align:center;
 			padding-top:20vh;
 			font-size:20vmin;
+		}
+		#nomsgmsg{
+			opacity: 0.5;
+			text-align:center;
+			padding-top:20vh;
+			font-size:10vmin;
 		}
 		li.message.firstline:first-child{
 			padding-top: 0;
@@ -183,11 +190,11 @@ footer{
 		font-size: 1.5em;
 		vertical-align:top;
 		text-align: right;
-		background-color: $mdl-blue;
+		background-color: transparent;
 		transition: background-color 0.5s;
 	}
 	#footermsg:hover{
-		background-color: $mdl-light-blue;
+		background-color: rgba(255,255,255,0.2);
 		cursor: pointer;
 	}
 	form{
@@ -212,7 +219,7 @@ footer{
 			outline:none;
 			box-shadow:none;
 			border-bottom: solid 0.6vmin $mdl-indigo;
-			background-color: $mdl-light-blue;
+			background-color: rgba(255,255,255,0.2);
 			&::input-placeholder {color: #eee;}
 			&::-webkit-input-placeholder {color: #eee;}
 			&:-moz-placeholder { color: #eee;}

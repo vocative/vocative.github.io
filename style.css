@@ -28,7 +28,7 @@ header {
     position: absolute;
     left: 0;
     /*to not uncenter the h1*/
-    background-color: #2196F3;
+    background-color: transparent;
     transition: background-color 0.5s; }
     header .logos #logo, header .logos #backbtnsmall {
       display: inline-block;
@@ -46,7 +46,7 @@ header {
         header .logos #backbtnsmall {
           display: none; } }
   header .logos:hover {
-    background-color: #3BB0FF;
+    background-color: rgba(255, 255, 255, 0.2);
     cursor: pointer; }
   header h1 {
     font-size: 1.5em;
@@ -57,21 +57,21 @@ header {
       display: inline-block;
       color: white;
       text-decoration: none;
-      padding: 0 2em; }
+      padding: 0 2em;
+      background-color: transparent;
+      transition: background-color 0.5s; }
     header h1 a:hover {
-      background-color: #2196F3;
-      transition: background-color 0.5s;
-      background-color: #3BB0FF;
+      background-color: rgba(255, 255, 255, 0.2);
       cursor: pointer; }
   header .admin-drawer-icon {
     padding: 0 1.25em;
-    background-color: #2196F3;
+    background-color: transparent;
     transition: background-color 0.5s;
     position: absolute;
     right: 0;
     /*to not uncenter the h1*/ }
   header .admin-drawer-icon:hover {
-    background-color: #3BB0FF;
+    background-color: rgba(255, 255, 255, 0.2);
     cursor: pointer; }
   header .admin-drawer-icon:before {
     content: "";
@@ -126,9 +126,15 @@ main {
         main ul#messages div#msgwrap {
           padding: 0 20%; } }
     main ul#messages #loadmsg {
+      opacity: 0.5;
       text-align: center;
       padding-top: 20vh;
       font-size: 20vmin; }
+    main ul#messages #nomsgmsg {
+      opacity: 0.5;
+      text-align: center;
+      padding-top: 20vh;
+      font-size: 10vmin; }
     main ul#messages li.message.firstline:first-child {
       padding-top: 0; }
     main ul#messages li.message:first-child .from {
@@ -156,13 +162,13 @@ footer {
     font-size: 1.5em;
     vertical-align: top;
     text-align: right;
-    background-color: #2196F3;
+    background-color: transparent;
     transition: background-color 0.5s; }
     @media (max-aspect-ratio: 1 / 1) {
       footer #footermsg {
         display: none; } }
   footer #footermsg:hover {
-    background-color: #3BB0FF;
+    background-color: rgba(255, 255, 255, 0.2);
     cursor: pointer; }
   footer form {
     display: inline-block; }
@@ -195,7 +201,7 @@ footer {
       outline: none;
       box-shadow: none;
       border-bottom: solid 0.6vmin #3F51B5;
-      background-color: #3BB0FF; }
+      background-color: rgba(255, 255, 255, 0.2); }
       footer form input[type=text]:focus::input-placeholder {
         color: #eee; }
       footer form input[type=text]:focus::-webkit-input-placeholder {
