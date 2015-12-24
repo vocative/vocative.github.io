@@ -15,7 +15,7 @@ app.controller("ChatCtrl", function($scope, ChatRoom) {
 	$scope.messages = ChatRoom($scope.room);
 	
 	$scope.style={};
-	$scope.style.bgcolor="#673AB7";
+	$scope.style.bgcolor="#2196F3";
 	/*
 	$mdl-red: #F44336;
 	$mdl-pink: #E91E63;
@@ -26,13 +26,18 @@ app.controller("ChatCtrl", function($scope, ChatRoom) {
 	*/
 	
 	function scrollToBottom(){
-		if($("#messages").scrollTop()+$("#messages").height()+10>$("#messages").prop("scrollHeight"))
-			setTimeout(function(){
-				$("#messages").scrollTop($("#messages").prop("scrollHeight"));
-			},10);
+		setTimeout(function(){
+			$("#messages").scrollTop(getTotalHeight() - getScrollBufferHeight());
+			//updateStretchyScroll();
+		},10);
 	}
-	$scope.messages.$loaded(scrollToBottom);
-	$scope.messages.$watch(scrollToBottom);
+	$(scrollToBottom);
+	function scrollToBottomIfAtBottom(){
+		if($("#messages").scrollTop() + 10 > getTotalHeight() - getScrollBufferHeight())
+			scrollToBottom();
+	}
+	$scope.messages.$loaded(scrollToBottomIfAtBottom);
+	$scope.messages.$watch(scrollToBottomIfAtBottom);
 	$scope.addMessage = function(){
 		if(!$scope.username){
 			smoothAlert("You need a username!",-1);
@@ -82,38 +87,48 @@ function smoothAlert(message, disposition){
 	setTimeout(function(){alertElem.remove();}, 5000);
 }
 
+function getScrollBufferHeight(){
+	//should correspond with ul#messages padding-top and padding-bottom.
+	var heightPx = 0;
+	return heightPx;
+}
+function getTotalHeight(){
+	var heightPx = getScrollBufferHeight();
+	var totalHeight = $("ul#messages").prop("scrollHeight") //Get scroll height
+		- $("ul#messages").height() //Account for not scrolling down all the way to the bottom edge, missing by height
+		- 2 * heightPx; //Account for jQuery not counting padding
+	return totalHeight;
+}
+
+/*var st;
+function updateStretchyScroll(){
+	var heightPx = getScrollBufferHeight();
+	
+	var totalHeight = getTotalHeight();
+	
+	if(st <= heightPx){
+		
+		st = $("ul#messages").scrollTop();
+		if(st < 0) st = 0;
+		
+		st = st * 0.8 + heightPx * 0.2;
+		$("ul#messages").scrollTop(st);
+	}else if(st >= totalHeight - heightPx){
+		var totalHeight = getTotalHeight();
+		
+		st = $("ul#messages").scrollTop();
+		if(st > totalHeight) st = totalHeight;
+		
+		st = st * 0.8 + (totalHeight - heightPx) * 0.2;
+		$("ul#messages").scrollTop(st);
+	}else{
+		st = $("ul#messages").scrollTop();
+	}
+}*/
+
 $(function(){
 	$("#username").focus();
-	var st;
-	 $("ul#messages").css({opacity:1});
-	function updateStretchyScroll(){
-		var heightPx = 20 * $(window).height()/100;
-		var totalHeight = $("ul#messages").prop("scrollHeight") //Get scroll height
-			- $("ul#messages").height() //Account for not scrolling down all the way to the bottom edge, missing by height
-			- 2 * heightPx //Account for jQuery not counting padding
-			+ 30; //Give some padding at the bottom
-		
-		$("ul#messages").css({"border":"none"});
-		if(st <= heightPx){
-			$("ul#messages").css({"border-top":"solid 10px #ccc"});
-			
-			st = $("ul#messages").scrollTop();
-			if(st < 0) st = 0;
-			
-			st = st * 0.8 + heightPx * 0.2;
-			$("ul#messages").scrollTop(st);
-		}else if(st >= totalHeight - heightPx){
-			$("ul#messages").css({"border-bottom":"solid 10px #ccc"});
-			
-			st = $("ul#messages").scrollTop();
-			if(st > totalHeight) st = totalHeight;
-			
-			st = st * 0.8 + (totalHeight - heightPx) * 0.2;
-			$("ul#messages").scrollTop(st);
-		}else{
-			st = $("ul#messages").scrollTop();
-		}
-	}
-	$("ul#messages").scroll(updateStretchyScroll);
-	setInterval(updateStretchyScroll,100);
+	$("ul#messages").css({opacity:1});
+	//$("ul#messages").scroll(updateStretchyScroll);
+	//setInterval(updateStretchyScroll,100);
 });
