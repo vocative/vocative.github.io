@@ -111,8 +111,22 @@ $(function(){
 	
 	$(window).focus(function(){
 		if(!$("#username").val())
-			setTimeout(function(){$("#username").focus();},10);
+			$("#username").focus();
 		else
-			setTimeout(function(){$("#newmsg").focus();},10);
+			$("#newmsg").focus();
+	});
+	
+	$(window).click(function(){
+		$("#admin-drawer").removeClass("slidout");
+	});
+	$(".admin-drawer-icon").click(function(e){
+		$("#admin-drawer").addClass("slidout");
+		e.stopPropagation();
+	});
+	$("#admin-drawer").click(function(e){
+		e.stopPropagation();
+	});
+	$("#admin-drawer .x-out").click(function(e){
+		$("#admin-drawer").removeClass("slidout");
 	});
 });

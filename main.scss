@@ -75,7 +75,7 @@ header{
 		margin:0;
 		text-align:center;
 	}
-	/*https://css-tricks.com/three-line-menu-navicon/*/
+	/* https://css-tricks.com/three-line-menu-navicon/ */
 	.admin-drawer-icon {
 		padding: 0 1.25em;
 		background-color: transparent;
@@ -86,7 +86,7 @@ header{
 		background-color: rgba(255,255,255,0.2);
 		cursor: pointer;
 	}
-	.admin-drawer-icon:before {
+	.admin-drawer-icon .subelem{
 		content: "";
 		display: inline-block;
 		width: 1.3em;
@@ -95,6 +95,49 @@ header{
 		box-shadow: 
 			0 -0.4em 0 0 white,
 			0 -0.8em 0 0 white;
+	}
+}
+#admin-drawer{
+	position:fixed;
+	z-index: 1000;
+	top:0; bottom:0;
+	right: -40vw;
+	width: 30vw;
+	box-sizing: border-box;
+	transition: right 0.5s;
+	background-color: white;
+	padding: 2em;
+	font-size: 3vh;
+	box-shadow: -3vmin 0 3vmin rgba(0,0,0,0.3);
+	&.slidout{
+		right: 0;
+	}
+	.x-out{
+		float:right;
+		font-size:1.2em;
+		position: absolute;
+		top:1em;right:1.5em;
+	}
+	.x-out:hover{
+		cursor:pointer;
+		opacity: 0.5;
+	}
+	h2{
+		margin: 0;
+		margin-bottom: 0.4em;
+	}
+	label{
+		font-variant: small-caps;
+		font-weight: bold;
+		box-sizing: border-box;
+		height: 2em;
+		margin:0;
+		display: block;
+		padding:0;
+		input{
+			font-variant: normal;
+			font-weight: normal;
+		}
 	}
 }
 main{
@@ -180,6 +223,56 @@ main{
 		}
 	}
 }
+
+input.matdes{
+	background-color: transparent;
+	outline:none;
+	box-shadow:none;
+	border: none;
+	padding: 0.1em 0.3em;
+	border-radius: 0.1em;
+}
+input.matdes:focus{
+	outline:none;
+	box-shadow:none;
+	border-bottom: solid 0.6vmin $mdl-indigo;
+}
+input.matdes.darkbg:focus{
+	background-color: rgba(255,255,255,0.2);
+	&::input-placeholder {color: #eee;}
+	&::-webkit-input-placeholder {color: #eee;}
+	&:-moz-placeholder { color: #eee;}
+	&::-moz-placeholder { color: #eee; }
+	&:-ms-input-placeholder { color: #eee; }
+}
+input.matdes.darkbg{
+	color:white;
+	border-bottom: solid 0.3vmin #ccc;
+	/*http://blog.teamtreehouse.com/the-css3-placeholder-pseudo-element*/
+	&::input-placeholder {color: #ccc;}
+	&::-webkit-input-placeholder {color: #ccc;}
+	&:-moz-placeholder { color: #ccc;}
+	&::-moz-placeholder { color: #ccc; }
+	&:-ms-input-placeholder { color: #ccc; }
+}
+input.matdes.lightbg{
+	color: black;
+	border-bottom: solid 0.3vmin #666;
+	&::input-placeholder {color: #999;}
+	&::-webkit-input-placeholder {color: #999;}
+	&:-moz-placeholder { color: #999;}
+	&::-moz-placeholder { color: #999; }
+	&:-ms-input-placeholder { color: #999; }
+}
+input.matdes.lightbg:focus{
+	background-color: rgba(0,0,0,0.1);
+	&::input-placeholder {color: #666;}
+	&::-webkit-input-placeholder {color: #666;}
+	&:-moz-placeholder { color: #666;}
+	&::-moz-placeholder { color: #666; }
+	&:-ms-input-placeholder { color: #666; }
+}
+
 footer{
 	bottom: 0;
 	font-size: 3vh;
@@ -203,31 +296,6 @@ footer{
 		display: inline-block;
 		@media(min-aspect-ratio: 1/1){width: 60%;}
 		@media(max-aspect-ratio: 1/1){width: 95%;padding-left:5%;}
-		input[type=text]{
-			background-color: transparent;
-			outline:none;
-			box-shadow:none;
-			border: none;
-			padding: 0.1em 0.3em;
-			border-bottom: solid 0.3vmin #ccc;
-			/*http://blog.teamtreehouse.com/the-css3-placeholder-pseudo-element*/
-			&::input-placeholder {color: #ccc;}
-			&::-webkit-input-placeholder {color: #ccc;}
-			&:-moz-placeholder { color: #ccc;}
-			&::-moz-placeholder { color: #ccc; }
-			&:-ms-input-placeholder { color: #ccc; }
-		}
-		input[type=text]:focus{
-			outline:none;
-			box-shadow:none;
-			border-bottom: solid 0.6vmin $mdl-indigo;
-			background-color: rgba(255,255,255,0.2);
-			&::input-placeholder {color: #eee;}
-			&::-webkit-input-placeholder {color: #eee;}
-			&:-moz-placeholder { color: #eee;}
-			&::-moz-placeholder { color: #eee; }
-			&:-ms-input-placeholder { color: #eee; }
-		}
 		#username{width:20%;}
 		#newmsg{width:65%;}
 		input[type=submit]{

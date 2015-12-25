@@ -16,7 +16,7 @@
 		Multi-line messages - when you get to a new line, the box expands upward beyond the edge of the footer
 		Subdiscussions
 		Infinite-scrolling
-		Admin - colors, moderation (?), stickies, save as file
+		Admin - moderation (?), stickies, save as file
 		message timestamps
 	-->
 	
@@ -30,10 +30,14 @@
 				<a id="logo" href="index.html">SocSem</a>
 				<a id="backbtnsmall" href="index.html">&lt;</a>
 			</span>
-			<span class="admin-drawer-icon ng-hide" ng-show="admin"></span>
+			<span class="admin-drawer-icon" ng-show="admin"><span class="subelem"></span></span>
 			<h1><a ng-href="chat.html?room={{room}}" ng-bind="roomnbsp"></a></h1>
 		</header>
-		<div class="admin-drawer"></div>
+		<div id="admin-drawer" ng-show="admin">
+			<span class="x-out">&#10060;</span>
+			<h2>Admin Tools</h2>
+			<label>Theme Color: <input type="text" class="matdes lightbg" placeholder="deepskyblue" ng-model="style.bgcolor"></label>
+		</div>
 		<main>
 			<div id="smoothalerts"></div>
 			<ul id="messages">
@@ -53,9 +57,9 @@
 		<footer ng-style="{'background-color':style.bgcolor}">
 			<label ng-attr-for="{{username.length?'newmsg':'username'}}" id="footermsg">Message</label>
 			<form ng-submit="addMessage()" autocomplete="off">
-				<input id="username" ng-model="username" type="text" placeholder="Name...">
-				<input id="newmsg" ng-model="newmsg" type="text" placeholder="Message...">
-				<input type="submit" value="&gt;">
+				<input id="username" class="matdes darkbg" ng-model="username" type="text" placeholder="Name...">
+				<input id="newmsg" class="matdes darkbg" ng-model="newmsg" type="text" placeholder="Message...">
+				<input type="submit" value="&#10148;">
 			</form>
 		</footer>
 	</div>

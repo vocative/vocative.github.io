@@ -23,7 +23,7 @@ header {
   overflow-y: visible;
   overflow-x: visible;
   font-size: 4vh;
-  /*https://css-tricks.com/three-line-menu-navicon/*/ }
+  /* https://css-tricks.com/three-line-menu-navicon/ */ }
   header .logos {
     margin: 0;
     position: absolute;
@@ -73,13 +73,52 @@ header {
   header .admin-drawer-icon:hover {
     background-color: rgba(255, 255, 255, 0.2);
     cursor: pointer; }
-  header .admin-drawer-icon:before {
+  header .admin-drawer-icon .subelem {
     content: "";
     display: inline-block;
     width: 1.3em;
     height: 0.2em;
     background: white;
     box-shadow: 0 -0.4em 0 0 white, 0 -0.8em 0 0 white; }
+
+#admin-drawer {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  bottom: 0;
+  right: -40vw;
+  width: 30vw;
+  box-sizing: border-box;
+  transition: right 0.5s;
+  background-color: white;
+  padding: 2em;
+  font-size: 3vh;
+  box-shadow: -3vmin 0 3vmin rgba(0, 0, 0, 0.3); }
+  #admin-drawer.slidout {
+    right: 0; }
+  #admin-drawer .x-out {
+    float: right;
+    font-size: 1.2em;
+    position: absolute;
+    top: 1em;
+    right: 1.5em; }
+  #admin-drawer .x-out:hover {
+    cursor: pointer;
+    opacity: 0.5; }
+  #admin-drawer h2 {
+    margin: 0;
+    margin-bottom: 0.4em; }
+  #admin-drawer label {
+    font-variant: small-caps;
+    font-weight: bold;
+    box-sizing: border-box;
+    height: 2em;
+    margin: 0;
+    display: block;
+    padding: 0; }
+    #admin-drawer label input {
+      font-variant: normal;
+      font-weight: normal; }
 
 main {
   overflow-y: scroll;
@@ -151,6 +190,74 @@ main {
     main ul#messages li.message.firstline {
       padding-top: 1em; }
 
+input.matdes {
+  background-color: transparent;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  padding: 0.1em 0.3em;
+  border-radius: 0.1em; }
+
+input.matdes:focus {
+  outline: none;
+  box-shadow: none;
+  border-bottom: solid 0.6vmin #3F51B5; }
+
+input.matdes.darkbg:focus {
+  background-color: rgba(255, 255, 255, 0.2); }
+  input.matdes.darkbg:focus::input-placeholder {
+    color: #eee; }
+  input.matdes.darkbg:focus::-webkit-input-placeholder {
+    color: #eee; }
+  input.matdes.darkbg:focus:-moz-placeholder {
+    color: #eee; }
+  input.matdes.darkbg:focus::-moz-placeholder {
+    color: #eee; }
+  input.matdes.darkbg:focus:-ms-input-placeholder {
+    color: #eee; }
+
+input.matdes.darkbg {
+  color: white;
+  border-bottom: solid 0.3vmin #ccc;
+  /*http://blog.teamtreehouse.com/the-css3-placeholder-pseudo-element*/ }
+  input.matdes.darkbg::input-placeholder {
+    color: #ccc; }
+  input.matdes.darkbg::-webkit-input-placeholder {
+    color: #ccc; }
+  input.matdes.darkbg:-moz-placeholder {
+    color: #ccc; }
+  input.matdes.darkbg::-moz-placeholder {
+    color: #ccc; }
+  input.matdes.darkbg:-ms-input-placeholder {
+    color: #ccc; }
+
+input.matdes.lightbg {
+  color: black;
+  border-bottom: solid 0.3vmin #666; }
+  input.matdes.lightbg::input-placeholder {
+    color: #999; }
+  input.matdes.lightbg::-webkit-input-placeholder {
+    color: #999; }
+  input.matdes.lightbg:-moz-placeholder {
+    color: #999; }
+  input.matdes.lightbg::-moz-placeholder {
+    color: #999; }
+  input.matdes.lightbg:-ms-input-placeholder {
+    color: #999; }
+
+input.matdes.lightbg:focus {
+  background-color: rgba(0, 0, 0, 0.1); }
+  input.matdes.lightbg:focus::input-placeholder {
+    color: #666; }
+  input.matdes.lightbg:focus::-webkit-input-placeholder {
+    color: #666; }
+  input.matdes.lightbg:focus:-moz-placeholder {
+    color: #666; }
+  input.matdes.lightbg:focus::-moz-placeholder {
+    color: #666; }
+  input.matdes.lightbg:focus:-ms-input-placeholder {
+    color: #666; }
+
 footer {
   bottom: 0;
   font-size: 3vh; }
@@ -179,39 +286,6 @@ footer {
       footer form {
         width: 95%;
         padding-left: 5%; } }
-    footer form input[type=text] {
-      background-color: transparent;
-      outline: none;
-      box-shadow: none;
-      border: none;
-      padding: 0.1em 0.3em;
-      border-bottom: solid 0.3vmin #ccc;
-      /*http://blog.teamtreehouse.com/the-css3-placeholder-pseudo-element*/ }
-      footer form input[type=text]::input-placeholder {
-        color: #ccc; }
-      footer form input[type=text]::-webkit-input-placeholder {
-        color: #ccc; }
-      footer form input[type=text]:-moz-placeholder {
-        color: #ccc; }
-      footer form input[type=text]::-moz-placeholder {
-        color: #ccc; }
-      footer form input[type=text]:-ms-input-placeholder {
-        color: #ccc; }
-    footer form input[type=text]:focus {
-      outline: none;
-      box-shadow: none;
-      border-bottom: solid 0.6vmin #3F51B5;
-      background-color: rgba(255, 255, 255, 0.2); }
-      footer form input[type=text]:focus::input-placeholder {
-        color: #eee; }
-      footer form input[type=text]:focus::-webkit-input-placeholder {
-        color: #eee; }
-      footer form input[type=text]:focus:-moz-placeholder {
-        color: #eee; }
-      footer form input[type=text]:focus::-moz-placeholder {
-        color: #eee; }
-      footer form input[type=text]:focus:-ms-input-placeholder {
-        color: #eee; }
     footer form #username {
       width: 20%; }
     footer form #newmsg {
