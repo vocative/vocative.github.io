@@ -126,13 +126,22 @@ header{
 		margin: 0;
 		margin-bottom: 0.4em;
 	}
+	ul{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		padding-left: 2em;
+	}
+	ul li{
+		text-indent: -2em;
+		margin-bottom: 1em;
+	}
 	label{
 		font-variant: small-caps;
 		font-weight: bold;
 		box-sizing: border-box;
 		height: 2em;
 		margin:0;
-		display: block;
 		padding:0;
 		input{
 			font-variant: normal;

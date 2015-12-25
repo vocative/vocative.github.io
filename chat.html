@@ -33,10 +33,13 @@
 			<span class="admin-drawer-icon" ng-show="admin"><span class="subelem"></span></span>
 			<h1><a ng-href="chat.html?room={{room}}" ng-bind="roomnbsp"></a></h1>
 		</header>
-		<div id="admin-drawer" ng-show="admin">
+		<div id="admin-drawer" class="slidout" ng-show="admin">
 			<span class="x-out">&#10060;</span>
 			<h2>Admin Tools</h2>
-			<label>Theme Color: <input type="text" class="matdes lightbg" placeholder="deepskyblue" ng-model="style.bgcolor"></label>
+			<ul>
+				<li><label>Theme Color: <input type="text" class="matdes lightbg" placeholder="deepskyblue" ng-model="style.bgcolor"></label></li>
+				<li><a ng-href="https://socsem.firebaseio.com/{{room}}/messages.json">Download Chats</a> (you probably don't want this)</li>
+			</ul>
 		</div>
 		<main>
 			<div id="smoothalerts"></div>
