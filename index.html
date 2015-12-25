@@ -12,9 +12,17 @@
 	}
 	h1{
 		margin: 0;
-		padding-top: 30vh;
+		padding-top: 25vh;
 		font-variant:small-caps;
 		font-size: 3em;
+	}
+	h2{
+		font-size: 1.3em;
+		margin: 0;
+		font-weight: normal;
+	}
+	form{
+		margin-top: 0.5em;
 	}
 	form input{
 		display:inline-block;
@@ -71,7 +79,7 @@
 		}
 		
 footer{
-	color: #e3e3e3;
+	color: #ccc;
 	font-size: 0.5em;
 	position: fixed;
 	bottom: 1em;
@@ -88,13 +96,14 @@ footer a{
 }
 </style>
 <h1>SocSem</h1>
+<h2>Discuss. Learn. Synthesize. <b>Better Socratic Seminars.</b></h2>
 <form id="roomform">
-	<input type="text" id="roomname" placeholder="Short Story">
+	<input type="text" id="roomname" placeholder="Some Class 101">
 	<input type="submit" value="Enter room">
 </form>
 <footer>
-	<p>a webapp made in HTML5, CSS3, JQuery, AngularJS, and Firebase</p>
-	<p>for Lexington High School</p>
+	<p>Made with &lt;3 in Lexington</p>
+	<p>written in HTML5, CSS3, JQuery, AngularJS, and Firebase</p>
 	<p>by <a href="http://clive.io">Clive Chan</a></p>
 </footer>
 <script>
