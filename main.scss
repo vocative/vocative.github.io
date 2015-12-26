@@ -77,6 +77,7 @@ header{
 	}
 	/* https://css-tricks.com/three-line-menu-navicon/ */
 	.admin-drawer-icon {
+		display: none;
 		padding: 0 1.25em;
 		background-color: transparent;
 		transition: background-color 0.5s;
@@ -97,7 +98,11 @@ header{
 			0 -0.8em 0 0 white;
 	}
 }
+.admin header .admin-drawer-icon, .admin #admin-drawer, .admin #admin-drawer.slidout{
+	display: block;
+}
 #admin-drawer{
+	display: none;
 	position:fixed;
 	z-index: 1000;
 	top:0; bottom:0;

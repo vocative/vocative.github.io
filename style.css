@@ -64,6 +64,7 @@ header {
       background-color: rgba(255, 255, 255, 0.2);
       cursor: pointer; }
   header .admin-drawer-icon {
+    display: none;
     padding: 0 1.25em;
     background-color: transparent;
     transition: background-color 0.5s;
@@ -81,7 +82,11 @@ header {
     background: white;
     box-shadow: 0 -0.4em 0 0 white, 0 -0.8em 0 0 white; }
 
+.admin header .admin-drawer-icon, .admin #admin-drawer, .admin #admin-drawer.slidout {
+  display: block; }
+
 #admin-drawer {
+  display: none;
   position: fixed;
   z-index: 1000;
   top: 0;
