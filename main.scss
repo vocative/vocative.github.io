@@ -113,7 +113,7 @@ header{
 	background-color: white;
 	padding: 2em;
 	font-size: 3vh;
-	box-shadow: -3vmin 0 3vmin rgba(0,0,0,0.3);
+	box-shadow: -1vw 0 1vw rgba(0,0,0,0.3), -2vw 0 2vw rgba(0,0,0,0.1);
 	&.slidout{
 		right: 0;
 	}
@@ -194,8 +194,8 @@ main{
 		div#msgwrap{
 			box-sizing: border-box;
 			min-height: 80vh;
-			border-top:solid 2.5vmin rgba(0,0,0,0.3);
-			border-bottom:solid 2.5vmin rgba(0,0,0,0.3);
+			border-top:solid 2vmin rgba(0,0,0,0.5);
+			border-bottom:solid 2vmin rgba(0,0,0,0.5);
 			@media(max-width:600px){padding: 0;}
 			@media(min-width:600px){padding: 0 20%;}
 		}
