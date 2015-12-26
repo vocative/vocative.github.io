@@ -1,4 +1,4 @@
-var app = angular.module("sampleApp", ["firebase", "ngCookies"]);
+var app = angular.module("ChatApp", ["firebase", "ngCookies"]);
 
 app.factory("ChatRoom", function($firebaseArray) { return function(room) {
 	var ref = new Firebase("https://vocative.firebaseio.com/" + room + "/messages");
