@@ -1,121 +1,43 @@
-<style>
-	html,body{
-		width: 100%;
-		height: 100%;
-		padding:0;
-		margin:0;
-	}
-	body{
-		font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
-		text-align: center;
-		font-size: 4vmin;
-	}
-	h1{
-		margin: 0;
-		padding-top: 25vh;
-		font-variant:small-caps;
-		font-size: 3em;
-	}
-	h2{
-		font-size: 1.3em;
-		margin: 0;
-		font-weight: normal;
-	}
-	form{
-		margin-top: 0.5em;
-	}
-	form input{
-		display:inline-block;
-		font-size: 4vmin;
-		height: 2em;
-		line-height: 2em;
-		vertical-align:middle;
-		padding:0;
-		margin:0;
-	}
-	form input[type=text]{
-		width: 15em;
-	}
-	form input[type=submit]{
-		width: 8em;
-	}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+	<meta name="description" content="Vocative: The student-run class discussion platform">
+	<meta name="copyright" content="Clive Chan, 2015">
+	<meta name="author" content="Clive Chan (http://clive.io)">
 	
+	<title>Vocative</title>
 	
-	
-		input[type=text]{
-			background-color: transparent;
-			border: none;
-			border-bottom: solid 0.3vmin #ccc;
-			/*http://blog.teamtreehouse.com/the-css3-placeholder-pseudo-element*/
-			&::input-placeholder {color: #ccc;}
-			&::-webkit-input-placeholder {color: #ccc;}
-			&:-moz-placeholder { color: #ccc;}
-			&::-moz-placeholder { color: #ccc; }
-			&:-ms-input-placeholder { color: #ccc; }
-		}
-		input[type=text]:focus{
-			outline:none;
-			box-shadow:none;
-			border-bottom: solid 0.6vmin #3F51B5;
-			&::input-placeholder {color: #eee;}
-			&::-webkit-input-placeholder {color: #eee;}
-			&:-moz-placeholder { color: #eee;}
-			&::-moz-placeholder { color: #eee; }
-			&:-ms-input-placeholder { color: #eee; }
-		}
-		input[type=submit]{
-			display: inline-block;
-			width: 10%;
-			background-color: #3F51B5;
-			font-weight:bold;
-			color: white;
-			border: none;
-			height: 1.5em;
-			line-height: 1.5em;
-			padding-bottom: 5vmin;
-		}
-		input[type=submit]:focus, input[type=submit]:hover{
-			background-color: #596BCF;
-		}
-		
-footer{
-	color: #ccc;
-	font-size: 0.5em;
-	position: fixed;
-	bottom: 1em;
-	left: 50%;
-	width: 30em;
-	margin-left:-15em;
-	line-height: 1.3em;
-}
-footer p{
-	margin:0;
-}
-footer a{
-	color: #e3e3e3;
-}
-</style>
-<h1>SocSem</h1>
-<h2>Discuss. Learn. Synthesize. <b>Better Socratic Seminars.</b></h2>
-<form id="roomform">
-	<input type="text" id="roomname" placeholder="Some Class 101">
-	<input type="submit" value="Enter room">
-</form>
-<footer>
-	<p>Made with &lt;3 in Lexington</p>
-	<p>written in HTML5, CSS3, JQuery, AngularJS, and Firebase</p>
-	<p>by <a href="http://clive.io">Clive Chan</a></p>
-</footer>
-<script>
-	(function(){
-		document.getElementById("roomform").onsubmit=function(){
-			if(document.getElementById("roomname").value)
-				window.location.assign("chat.html?room="+document.getElementById("roomname").value);
-			return false;
-		};
-		document.getElementById("roomname").focus();
-		window.onfocus = function(){
-			setTimeout(function(){document.getElementById("roomname").focus();},10);
-		};
-	})();
-</script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+	<link rel="stylesheet" href="index-style.css">
+</head>
+<body>
+	<h1>Vocative</h1>
+	<h2>Deliberate. Analyze. Explore. <b>The student-run class discussion platform.</b></h2>
+	<form id="roomform">
+		<input type="text" id="roomname" placeholder="Some Class 101">
+		<input type="submit" value="Enter room">
+	</form>
+	<footer>
+		<p>Made with &lt;3 in Lexington</p>
+		<p>written in HTML5, CSS3, JQuery, AngularJS, and Firebase</p>
+		<p>by <a href="http://clive.io">Clive Chan</a></p>
+	</footer>
+	<script>
+		(function(){
+			document.getElementById("roomform").onsubmit=function(){
+				if(document.getElementById("roomname").value)
+					window.location.assign("chat.html?room="+document.getElementById("roomname").value);
+				return false;
+			};
+			document.getElementById("roomname").focus();
+			window.onfocus = function(){
+				setTimeout(function(){document.getElementById("roomname").focus();},10);
+			};
+		})();
+	</script>
+</body>
+</html>

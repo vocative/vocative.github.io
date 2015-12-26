@@ -1,7 +1,7 @@
 var app = angular.module("sampleApp", ["firebase", "ngCookies"]);
 
 app.factory("ChatRoom", function($firebaseArray) { return function(room) {
-	var ref = new Firebase("https://socsem.firebaseio.com/" + room + "/messages");
+	var ref = new Firebase("https://vocative.firebaseio.com/" + room + "/messages");
 	return $firebaseArray(ref);
 }});
 
@@ -11,7 +11,7 @@ app.controller("ChatCtrl", function($scope, ChatRoom, $cookies, $firebaseObject)
 	else
 		window.location.replace("index.html");
 	
-	$firebaseObject(new Firebase("https://socsem.firebaseio.com/" + $scope.room + "/style"))
+	$firebaseObject(new Firebase("https://vocative.firebaseio.com/" + $scope.room + "/style"))
 		.$bindTo($scope,"style").then(function(){;
 			if(!$scope.style.bgcolor)$scope.style.bgcolor = "gray";
 			if(!$scope.style.altcolor)$scope.style.altcolor = "black";
