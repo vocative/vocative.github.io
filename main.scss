@@ -246,7 +246,7 @@ input.matdes{
 	padding: 0.1em 0.3em;
 	border-radius: 0.1em;
 }
-input.matdes:focus{
+input.matdes.darkbg:focus, input.matdes.lightbg:focus{
 	outline:none;
 	box-shadow:none;
 	border-bottom: solid 0.6vmin $mdl-indigo;
