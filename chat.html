@@ -48,9 +48,11 @@
 					<li id="loadmsg" class="message" ng-hide="loaded">Loading</li>
 					<li id="nomsgmsg" class="message" ng-show="loaded && messages.length == 0">no messages</li>
 					<div>
-						<li class="message" ng-repeat="(index,message) in messages" ng-class="{firstline:messages[index-1].from!=message.from}">
+						<li class="message" ng-repeat="(index,message) in messages" ng-class="{firstline:messages[index-1].from!=message.from}" 
+							ng-attr-title="{{message.timestamp | date:'h:mm:ss a, MM/dd/yyyy'}}">
 							<span class="from" ng-show="messages[index-1].from != message.from">{{ message.from }}</span>
 							<span class="content" ng-bind-html="message.content | linkify:'_blank':{title:'opens in new window'}"></span>
+							<span class="time">{{message.timestamp | moment}}</span>
 						</li>
 					</div>
 				</div>
@@ -67,6 +69,7 @@
 		</footer>
 	</div>
 	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
 	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-sanitize.js"></script>

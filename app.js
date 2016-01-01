@@ -1,11 +1,19 @@
 var app = angular.module("ChatApp", ["firebase", "ngCookies", "linkify"]);
 
+app.filter("moment",function(){
+	function f(jstimestamp){
+		return moment(parseInt(jstimestamp)).fromNow();
+	}
+	f.$stateful = true; //http://stackoverflow.com/a/34559665/1181387
+	return f;
+});
+
 app.factory("ChatRoom", function($firebaseArray) { return function(room) {
 	var ref = new Firebase("https://vocative.firebaseio.com/" + room + "/messages");
 	return $firebaseArray(ref);
 }});
 
-app.controller("ChatCtrl", function($scope, ChatRoom, $cookies, $firebaseObject) {
+app.controller("ChatCtrl", function($scope, ChatRoom, $cookies, $firebaseObject, $interval) {
 	if(QueryString.room !== undefined && QueryString.room)
 		$scope.room = QueryString.room;
 	else
@@ -17,6 +25,12 @@ app.controller("ChatCtrl", function($scope, ChatRoom, $cookies, $firebaseObject)
 			if(!$scope.style.altcolor)$scope.style.altcolor = "black";
 			if(!$scope.style.textcolor)$scope.style.textcolor = "white";
 		});
+	
+	//http://stackoverflow.com/a/34559665/1181387
+	var intervalPromise = $interval(function() {}, 1000);
+	$scope.$on('$destroy', function() {
+	   $interval.cancel(intervalPromise);
+	});
 	
 	$scope.messages = ChatRoom($scope.room);
 	$scope.roomnbsp = $scope.room.replace(" ","\u00A0"); //unicode for nbsp https://stackoverflow.com/questions/12431125/angular-js-return-a-string-with-html-characters-like-nbsp
@@ -46,7 +60,11 @@ app.controller("ChatCtrl", function($scope, ChatRoom, $cookies, $firebaseObject)
 			smoothAlert("No message",-1);
 			document.getElementById("newmsg").focus();
 		}else{
-			$scope.messages.$add({from:$scope.username.toUpperCase(),content:$scope.newmsg});
+			$scope.messages.$add({
+				from:$scope.username.toUpperCase(),
+				content:$scope.newmsg,
+				timestamp: (new Date()).getTime()
+			});
 			$scope.newmsg = "";
 			document.getElementById("newmsg").focus();
 		}
