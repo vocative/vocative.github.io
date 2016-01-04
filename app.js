@@ -20,7 +20,7 @@ app.controller("ChatCtrl", function($scope, ChatRoom, $cookies, $firebaseObject,
 		window.location.replace("index.html");
 	
 	$firebaseObject(new Firebase("https://vocative.firebaseio.com/" + $scope.room + "/style"))
-		.$bindTo($scope,"style").then(function(){;
+		.$bindTo($scope,"style").then(function(){
 			if(!$scope.style.bgcolor)$scope.style.bgcolor = "gray";
 			if(!$scope.style.altcolor)$scope.style.altcolor = "black";
 			if(!$scope.style.textcolor)$scope.style.textcolor = "white";

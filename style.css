@@ -176,6 +176,8 @@ main {
       @media (min-width: 600px) {
         main ul#messages div#msgwrap {
           padding: 0 20%; } }
+    main ul#messages div#msgwrap > div {
+      padding-bottom: 1em; }
     main ul#messages #loadmsg {
       opacity: 0.5;
       text-align: center;
@@ -190,17 +192,28 @@ main {
       padding-top: 0; }
     main ul#messages li.message:first-child .from {
       border: none; }
-    main ul#messages li.message:last-child {
-      padding-bottom: 1em; }
-    main ul#messages li.message .from {
-      font-weight: bold;
-      padding: 0.3em;
-      display: block;
-      border-top: solid 1px #000; }
-    main ul#messages li.message .content {
-      margin-left: 1em; }
-    main ul#messages li.message.firstline {
-      padding-top: 1em; }
+    main ul#messages li.message {
+      position: relative; }
+      main ul#messages li.message .time {
+        display: inline-block;
+        position: absolute;
+        white-space: nowrap;
+        text-align: right;
+        width: 40em;
+        left: -40em;
+        bottom: 0.5em;
+        font-size: 0.5em;
+        color: #999;
+        vertical-align: middle; }
+      main ul#messages li.message .from {
+        font-weight: bold;
+        padding: 0.3em 0.1em;
+        display: block;
+        border-top: solid 1px #000; }
+      main ul#messages li.message .content {
+        margin-left: 0.5em; }
+      main ul#messages li.message.firstline {
+        padding-top: 1em; }
 
 input.matdes {
   background-color: transparent;
