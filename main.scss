@@ -52,10 +52,10 @@ header{
 		position: absolute; left: 0;/*to not uncenter the h1*/
 		background-color: transparent;
 		transition: background-color 0.5s;
-	}
-	.logos:hover{
-		background-color: rgba(255,255,255,0.2);
-		cursor: pointer;
+		&:hover{
+			background-color: rgba(255,255,255,0.2);
+			cursor: pointer;
+		}
 	}
 	h1{
 		font-size: 1.5em;
@@ -97,9 +97,18 @@ header{
 			0 -0.4em 0 0 white,
 			0 -0.8em 0 0 white;
 	}
+	.msg-filter{
+		position: absolute;
+		right: 1em;
+		display: inline-block;
+		font-size: 0.8em;
+	}
 }
 .admin header .admin-drawer-icon, .admin #admin-drawer, .admin #admin-drawer.slidout{
 	display: block;
+}
+.admin header .msg-filter{
+	right: 5.5em;
 }
 #admin-drawer{
 	display: none;
