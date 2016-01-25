@@ -24,6 +24,7 @@ app.controller("ChatCtrl", function($scope, ChatRoom, $cookies, $firebaseObject,
 			if(!$scope.style.bgcolor)$scope.style.bgcolor = "gray";
 			if(!$scope.style.altcolor)$scope.style.altcolor = "black";
 			if(!$scope.style.textcolor)$scope.style.textcolor = "white";
+			if(!$scope.style.title)$scope.title =  $scope.room;
 		});
 	
 	//http://stackoverflow.com/a/34559665/1181387
@@ -33,7 +34,7 @@ app.controller("ChatCtrl", function($scope, ChatRoom, $cookies, $firebaseObject,
 	});
 	
 	$scope.messages = ChatRoom($scope.room);
-	$scope.roomnbsp = $scope.room.replace(" ","\u00A0"); //unicode for nbsp https://stackoverflow.com/questions/12431125/angular-js-return-a-string-with-html-characters-like-nbsp
+	//$scope.roomnbsp = $scope.room.replace(" ","\u00A0"); //unicode for nbsp https://stackoverflow.com/questions/12431125/angular-js-return-a-string-with-html-characters-like-nbsp
 	$scope.admin = (QueryString.admin !== undefined);
 	
 	if($cookies.get("username")){
