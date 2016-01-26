@@ -19,12 +19,12 @@ app.controller("ChatCtrl", function($scope, ChatRoom, $cookies, $firebaseObject,
 	else
 		window.location.replace("index.html");
 	
-	$firebaseObject(new Firebase("https://vocative.firebaseio.com/" + $scope.room + "/style"))
+	$firebaseObject(new Firebase("https://vocative.firebaseio.com/" + $scope.room.toUpperCase() + "/style"))
 		.$bindTo($scope,"style").then(function(){
 			if(!$scope.style.bgcolor)$scope.style.bgcolor = "gray";
 			if(!$scope.style.altcolor)$scope.style.altcolor = "black";
 			if(!$scope.style.textcolor)$scope.style.textcolor = "white";
-			if(!$scope.style.title)$scope.title =  $scope.room;
+			if(!$scope.style.title)$scope.style.title =  $scope.room;
 		});
 	
 	//http://stackoverflow.com/a/34559665/1181387
