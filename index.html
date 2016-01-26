@@ -53,7 +53,7 @@
 		(function(){
 			document.getElementById("roomform").onsubmit=function(){
 				if(document.getElementById("roomname").value)
-					window.location.assign("chat?room="+document.getElementById("roomname").value.toUpperCase());
+					window.location.assign("chat?room="+document.getElementById("roomname").value);
 				return false;
 			};
 			document.getElementById("roomname").focus();

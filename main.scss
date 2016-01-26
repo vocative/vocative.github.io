@@ -34,19 +34,19 @@ header{
 	overflow-x: visible;
 	font-size: 4vh;
 	.logos{
-		#logo, #backbtnsmall{
+		#logo{
 			display:inline-block;
 			text-decoration: none;
 			padding: 0 1em;
 			font-weight: bold;
 			color: inherit;
-		}
-		#logo{
-			@media(max-aspect-ratio: 3/4){display:none;}
-			font-variant:small-caps;
-		}
-		#backbtnsmall{
-			@media(min-aspect-ratio: 3/4){display:none;}
+			.wider{
+				@media(max-aspect-ratio: 3/4){display:none;}
+				font-variant:small-caps;
+			}
+			.narrower{
+				@media(min-aspect-ratio: 3/4){display:none;}
+			}
 		}
 		margin:0;
 		position: absolute; left: 0;/*to not uncenter the h1*/

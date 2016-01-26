@@ -17,7 +17,7 @@ app.controller("ChatCtrl", function($scope, ChatRoom, $cookies, $firebaseObject,
 	if(QueryString.room !== undefined && QueryString.room)
 		$scope.room = QueryString.room;
 	else
-		window.location.replace("index.html");
+		window.location.replace("../index.html");
 	
 	$firebaseObject(new Firebase("https://vocative.firebaseio.com/" + $scope.room.toUpperCase() + "/style"))
 		.$bindTo($scope,"style").then(function(){

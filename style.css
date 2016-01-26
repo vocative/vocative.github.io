@@ -31,20 +31,20 @@ header {
     /*to not uncenter the h1*/
     background-color: transparent;
     transition: background-color 0.5s; }
-    header .logos #logo, header .logos #backbtnsmall {
+    header .logos #logo {
       display: inline-block;
       text-decoration: none;
       padding: 0 1em;
       font-weight: bold;
       color: inherit; }
-    header .logos #logo {
-      font-variant: small-caps; }
-      @media (max-aspect-ratio: 3 / 4) {
-        header .logos #logo {
+      header .logos #logo .wider {
+        font-variant: small-caps; }
+        @media (max-aspect-ratio: 3 / 4) {
+          header .logos #logo .wider {
+            display: none; } }
+      @media (min-aspect-ratio: 3 / 4) {
+        header .logos #logo .narrower {
           display: none; } }
-    @media (min-aspect-ratio: 3 / 4) {
-      header .logos #backbtnsmall {
-        display: none; } }
     header .logos:hover {
       background-color: rgba(255, 255, 255, 0.2);
       cursor: pointer; }
