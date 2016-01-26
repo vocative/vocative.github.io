@@ -9,7 +9,7 @@ app.filter("moment",function(){
 });
 
 app.factory("ChatRoom", function($firebaseArray) { return function(room) {
-	var ref = new Firebase("https://vocative.firebaseio.com/" + room + "/messages");
+	var ref = new Firebase("https://vocative.firebaseio.com/" + room.toUpperCase() + "/messages");
 	return $firebaseArray(ref);
 }});
 
