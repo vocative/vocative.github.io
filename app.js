@@ -64,7 +64,8 @@ app.controller("ChatCtrl", function($scope, ChatRoom, $cookies, $firebaseObject,
 			$scope.messages.$add({
 				from:$scope.username.toUpperCase(),
 				content:$scope.newmsg,
-				timestamp: (new Date()).getTime()
+				timestamp: (new Date()).getTime(),
+				admin: $scope.admin
 			});
 			$scope.newmsg = "";
 			document.getElementById("newmsg").focus();
