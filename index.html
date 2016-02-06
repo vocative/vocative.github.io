@@ -15,12 +15,84 @@
 	<link rel="stylesheet" href="index-style.css">
 </head>
 <body>
-	<h1>Vocative</h1>
-	<h2>Deliberate. Analyze. Explore. <b>The student-run class discussion platform.</b></h2>
-	<form id="roomform">
-		<input type="text" id="roomname" placeholder="Some Class 101">
-		<input type="submit" value="Enter room">
-	</form>
+	<section id="splash">
+		<h1>Vocative</h1>
+		<h2><span style="display:inline-block;">Deliberate. Analyze. Explore.</span> <b style="display:inline-block;">The student-run class discussion platform.</b></h2>
+		<form id="roomform">
+			<input type="text" id="roomname" placeholder="SomeClass101">
+			<input type="submit" value="Enter room">
+		</form>
+		<div class="stats">
+			<div class="stat">
+				<h3>$0</h3>
+				zip, zero, zilch
+			</div>
+			<div class="stat">
+				<h3>&infin;</h3>
+				discussion rooms
+			</div>
+			<div class="stat">
+				<h3>more</h3>
+				features every day
+			</div>
+		</div>
+		<a href="#about" class="action-arrow">
+			<span class="arrow-v"></span>
+		</a>
+	</section>
+	<section id="about">
+		<header>
+			<h2>About</h2>
+		</header>
+		<div class="infobox">
+			<h3>What is Vocative?</h3>
+			<p>
+				Vocative is a student-created Socratic Seminar-style discussion forum
+					to facilitate classroom discussions on the modern Web.
+			</p>
+			<p>
+				Tools used in classrooms are often outdated, unreliable, and expensive,
+					but this is a tool built by students, for students, for free.
+			</p>
+		</div>
+		<div class="infobox">
+			<h3>What does it do?</h3>
+			<p>
+				At its core, Vocative is simply a chat application. A very pretty one.
+			</p>
+			<p>
+				On top of this core, though, it boasts a huge variety of features 
+				designed to make discussion flow easily, including message filtering, 
+				chat streams within the main conversation, and more.
+			</p>
+		</div>
+		<div class="infobox">
+			<h3>How do I use it?</h3>
+			<p>
+				Just type in a room code above!
+			</p>
+			<p>
+				You can also add <code>&amp;admin</code> to the end of the URL 
+				to enable administrative features.
+			</p>
+		</div>
+		<div class="infobox">
+			<h3>I have another question!</h3>
+			<p>
+				You can reach me at <a href="mailto:cc@clive.io">cc@clive.io</a>.
+			</p>
+		</div>
+		<div class="infobox">
+			<h3>I love this!</h3>
+			<p>
+				Yay, thank you for using Vocative!
+			</p>
+			<p>
+				If you want to support the developer (help me pay for college pls &lt;3),
+				you can 
+			</p>
+		</div>
+	</section>
 	<footer>
 		<p>Made with &lt;3 in Lexington</p>
 		<p>written in HTML5, CSS3, JQuery, AngularJS, and Firebase</p>
@@ -53,7 +125,7 @@
 		(function(){
 			document.getElementById("roomform").onsubmit=function(){
 				if(document.getElementById("roomname").value)
-					window.location.assign("chat?room="+document.getElementById("roomname").value);
+					window.location.assign("chat/index.html?room="+document.getElementById("roomname").value);
 				return false;
 			};
 			document.getElementById("roomname").focus();

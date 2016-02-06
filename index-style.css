@@ -11,7 +11,7 @@ body{
 }
 h1{
 	margin: 0;
-	padding-top: 25vh;
+	padding-top: 20vh;
 	font-variant:small-caps;
 	font-size: 3em;
 }
@@ -38,13 +38,22 @@ form input[type=text]{
 form input[type=submit]{
 	width: 8em;
 }
+p{
+	text-indent: 1em;
+}
 
 
 
+#splash{
+	height: 100vh;
+	padding:0;
+	margin:0;
+}
 input[type=text]{
 	background-color: transparent;
 	border: none;
 	border-bottom: solid 0.3vmin #ccc;
+	padding-left: 0.4em;
 	/*http://blog.teamtreehouse.com/the-css3-placeholder-pseudo-element*/
 	&::input-placeholder {color: #ccc;}
 	&::-webkit-input-placeholder {color: #ccc;}
@@ -56,6 +65,8 @@ input[type=text]:focus{
 	outline:none;
 	box-shadow:none;
 	border-bottom: solid 0.6vmin #3F51B5;
+	margin-bottom: -0.3vmin;
+	background-color: #eee;
 	&::input-placeholder {color: #eee;}
 	&::-webkit-input-placeholder {color: #eee;}
 	&:-moz-placeholder { color: #eee;}
@@ -78,20 +89,84 @@ input[type=submit]:focus, input[type=submit]:hover{
 }
 
 
+.stats{
+	display: block;
+	text-align: center;
+	font-size: 0.9em;
+	margin: 0.5em;
+}
+.stat{
+	display:inline-block;
+	background-color: #eee;
+	padding: 1em;
+	width: 9em;
+	margin: 0.5em;
+}
+.stat h3{
+	font-size: 2em;
+	font-weight: bold;
+	margin: 0;
+}
+
+.action-arrow{
+	display: inline-block;
+	height: 2em;
+	width: 2em;
+	border: solid 0.1em #000;
+	border-radius: 0.5em;
+	text-align: center;
+	transition: all 0.5s;
+}
+.action-arrow:hover{
+	background-color: #3F51B5;
+	transition: all 0.5s;
+}
+.action-arrow:hover .arrow-v{
+	border-color: #fff;
+}
+.action-arrow .arrow-v{
+	display: inline-block;
+	width:0.7em;
+	height:0.7em;
+	border-bottom: solid 0.1em #000;
+	border-left: solid 0.1em #000;
+	transform: rotate(-45deg);
+	padding:0;
+	margin:0;
+	margin-top: 0.4em;
+}
+
+.infobox{
+	vertical-align:top;
+	display: inline-block;
+	width: 20em;
+	padding: 1em;
+	background-color: #eee;
+	margin: 0.5em;
+	text-align: left;
+	font-size: 0.7em;
+}
+.infobox h3{
+	text-align: center;
+	margin: 0;
+	font-size: 1.5em;
+	margin-bottom: 0.5em;
+}
+
 	
 footer{
-	color: #ccc;
+	text-align: center;
+	color: #999;
 	font-size: 0.5em;
-	position: fixed;
 	bottom: 1em;
 	left: 50%;
-	width: 30em;
-	margin-left:-15em;
 	line-height: 1.3em;
+	padding: 2em;
+	margin-top: 5em;
 }
 footer p{
 	margin:0;
 }
 footer a{
-	color: #e3e3e3;
+	color: #bbb;
 }
