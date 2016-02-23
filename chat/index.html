@@ -51,7 +51,7 @@
 					<li id="loadmsg" class="message" ng-hide="loaded">Loading</li>
 					<li id="nomsgmsg" class="message" ng-show="loaded && messages.length == 0">no messages</li>
 					<div>
-						<li class="message" ng-repeat="(index,message) in messages" ng-class="{firstline:messages[index-1].from!=message.from}">
+						<li class="message" ng-repeat="(index,message) in messages" ng-show="!msgfilter || !msgfilter.length || message.from.toLowerCase().indexOf(msgfilter.toLowerCase()) > -1 || message.content.toLowerCase().indexOf(msgfilter.toLowerCase()) > -1" ng-class="{firstline:messages[index-1].from!=message.from}">
 							<span class="from" ng-show="messages[index-1].from != message.from">{{ message.from }}</span>
 							<span ng-attr-title="{{message.timestamp | date:'h:mm:ss a, MM/dd/yyyy'}}">
 								<span class="time" ng-show="!!message.timestamp && 
