@@ -17,7 +17,7 @@
 <body>
 	<section id="splash">
 		<h1>Vocative</h1>
-		<h2><span style="display:inline-block;">Deliberate. Analyze. Explore.</span> <b style="display:inline-block;">The student-run class discussion platform.</b></h2>
+		<div class="subtitle"><span style="display:inline-block;">Deliberate. Analyze. Explore.</span> <b style="display:inline-block;">The student-run class discussion platform.</b></div>
 		<form id="roomform">
 			<input type="text" id="roomname" placeholder="SomeClass101">
 			<input type="submit" value="Enter room">
@@ -82,7 +82,7 @@
 				You can reach me at <a href="mailto:cc@clive.io">cc@clive.io</a>.
 			</p>
 		</div>
-		<div class="infobox">
+		<!--div class="infobox">
 			<h3>I love this!</h3>
 			<p>
 				Yay, thank you for using Vocative!
@@ -91,14 +91,34 @@
 				If you want to support the developer (help me pay for college pls &lt;3),
 				you can 
 			</p>
-		</div>
+		</div-->
 	</section>
 	<footer>
 		<p>Made with &lt;3 in Lexington</p>
 		<p>written in HTML5, CSS3, JQuery, AngularJS, and Firebase</p>
 		<p>by <a href="http://clive.io">Clive Chan</a></p>
 	</footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script>
+    $(document).ready(function(){
+      var $d=$(document);
+      
+      //Smooth scrolling.
+      //Adapted from //http://www.paulund.co.uk/smooth-scroll-to-internal-links-with-jquery
+      $('a[href^="#"]').on('click',function (e) {
+        e.preventDefault();
+        
+        var target = this.hash;
+        var $target = $(target);
+        
+        $('html, body').stop().animate({
+          'scrollTop': $target.offset().top
+        }, 500, 'swing', function () {
+          window.location.hash = target;
+        });
+      });
+    });
+
 		//http://stackoverflow.com/a/979995/1181387
 		var QueryString = function () {
 		  // This function is anonymous, is executed immediately and 

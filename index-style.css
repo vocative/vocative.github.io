@@ -11,13 +11,19 @@ body{
 }
 h1{
 	margin: 0;
-	padding-top: 20vh;
+	padding-top: 18vh;
 	font-variant:small-caps;
 	font-size: 3em;
 }
+.subtitle{
+  font-size: 1.3em;
+  margin: 0;
+  font-weight: normal;
+}
 h2{
-	font-size: 1.3em;
+	font-size: 2em;
 	margin: 0;
+  padding-top: 0.3em;
 	font-weight: normal;
 }
 form{
@@ -93,7 +99,7 @@ input[type=submit]:focus, input[type=submit]:hover{
 	display: block;
 	text-align: center;
 	font-size: 0.9em;
-	margin: 0.5em;
+	margin: 2em 0 0.5em 0;
 }
 .stat{
 	display:inline-block;
@@ -162,7 +168,7 @@ footer{
 	left: 50%;
 	line-height: 1.3em;
 	padding: 2em;
-	margin-top: 5em;
+	margin-top: 1em;
 }
 footer p{
 	margin:0;
