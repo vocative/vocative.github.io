@@ -42,6 +42,7 @@
 				<li><label>Room Title: <input type="text" class="matdes lightbg" placeholder="Some Class 101" ng-model="style.title"></label></li>
 				<li><label>Theme Color: <input type="text" class="matdes lightbg" placeholder="deepskyblue" ng-model="style.bgcolor"></label></li>
 				<li><a ng-href="https://socsem.firebaseio.com/{{room}}/messages.json">Download Chats</a> (you probably don't want this)</li>
+				<li><label>Lock: <input type="checkbox" ng-model="style.locked">
 			</ul>
 		</div>
 		<main>
@@ -68,12 +69,13 @@
 			<span id="newmsgalert">new messages</span>
 		</main>
 		<footer ng-style="{'background-color':style.bgcolor}">
-			<label ng-attr-for="{{username.length?'newmsg':'username'}}" id="footermsg">Message</label>
-			<form ng-submit="addMessage()" autocomplete="off">
+			<label ng-attr-for="{{username.length?'newmsg':'username'}}" ng-hide="style.locked" id="footermsg">Message</label>
+			<form ng-submit="addMessage()" ng-hide="style.locked" autocomplete="off">
 				<input id="username" class="matdes darkbg" ng-model="username" type="text" placeholder="Name...">
 				<input id="newmsg" class="matdes darkbg" ng-model="newmsg" type="text" placeholder="Message...">
 				<input type="submit" value="&#10148;">
 			</form>
+			<h2 ng-show="style.locked">This room is currently locked</h2>
 		</footer>
 	</div>
 	

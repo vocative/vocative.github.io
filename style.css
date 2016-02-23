@@ -338,6 +338,10 @@ footer {
       background-color: #596BCF;
       border: none;
       outline: none; }
+  footer h2 {
+    margin: 0;
+    text-align: center;
+    opacity: 0.3; }
 
 #smoothalerts {
   position: fixed;

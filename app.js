@@ -24,7 +24,8 @@ app.controller("ChatCtrl", function($scope, ChatRoom, $cookies, $firebaseObject,
 			if(!$scope.style.bgcolor)$scope.style.bgcolor = "gray";
 			if(!$scope.style.altcolor)$scope.style.altcolor = "black";
 			if(!$scope.style.textcolor)$scope.style.textcolor = "white";
-			if(!$scope.style.title)$scope.style.title =  $scope.room;
+			if(!$scope.style.title)$scope.style.title = $scope.room;
+			if(!$scope.style.locked)$scope.style.locked = false;
 		});
 	
 	//http://stackoverflow.com/a/34559665/1181387
