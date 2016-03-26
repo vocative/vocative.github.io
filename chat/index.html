@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="ChatApp" ng-controller="ChatCtrl">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -9,7 +9,7 @@
 	<meta name="copyright" content="Clive Chan, 2015">
 	<meta name="author" content="Clive Chan (http://clive.io)">
 	
-	<title>Vocative</title>
+	<title ng-bind="style.title + ' | Vocative'">Vocative</title>
 	
 	<!--
 		Todos
@@ -23,7 +23,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
 	<link rel="stylesheet" href="../style.css">
 </head>
-<body ng-app="ChatApp" ng-controller="ChatCtrl" ng-class="{admin:admin}">
+<body ng-class="{admin:admin}">
 	<div id="wrapper">
 		<header ng-style="{'background-color':style.bgcolor}">
 			<span class="logos">
