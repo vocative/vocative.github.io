@@ -40,8 +40,8 @@
 			<h2>Admin Tools</h2>
 			<ul>
 				<li><label>Room Title: <input type="text" class="matdes lightbg" placeholder="Some Class 101" ng-model="style.title"></label></li>
-				<li><label>Theme Color: <input type="text" class="matdes lightbg" placeholder="deepskyblue" ng-model="style.bgcolor"></label></li>
-				<li><a ng-href="https://socsem.firebaseio.com/{{room}}/messages.json">Download Chats</a> (you probably don't want this)</li>
+				<li><label>Theme Color (<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value">css</a>): <input type="text" class="matdes lightbg" placeholder="deepskyblue" ng-model="style.bgcolor"></label></li>
+				<li><a ng-href="https://vocative.firebaseio.com/{{room | uppercase}}/messages.json">Download Chats</a> (you probably don't want this)</li>
 				<li><label>Lock: <input type="checkbox" ng-model="style.locked">
 			</ul>
 		</div>
