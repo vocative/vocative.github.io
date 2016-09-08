@@ -1,0 +1,15 @@
+{
+  "rules": {
+    ".read": true,
+    "$room": {
+      "style":{
+        ".write": true
+      },
+      "messages":{
+        "$msg":{
+          ".write": "!data.exists()"
+        }
+      }
+    }
+  }
+}
