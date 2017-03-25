@@ -48,7 +48,7 @@
 		</div>
 		<main>
 			<div id="smoothalerts"></div>
-      <div id="pinned" ng-show="style.pinned"><h2>PINNED MESSAGE</h2><div ng-bind-html="style.pinned"></div></div>
+      <div id="pinned" ng-show="style.pinned"><h2>PINNED MESSAGE</h2><div ng-bind-html="style.pinned | linkify:'_blank':{title:'opens in new window'}"></div></div>
 			<ul id="messages">
 				<div id="msgwrap">
 					<li id="loadmsg" class="message" ng-hide="loaded">Loading</li>
