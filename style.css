@@ -164,6 +164,14 @@ main {
     transition: bottom 1s; }
   main.unread #newmsgalert {
     bottom: 10vh; }
+  main #pinned {
+    position: fixed;
+    left: 1em;
+    top: 5em;
+    width: 15%; }
+    main #pinned h2 {
+      font-size: 1em;
+      margin: 0; }
   main ul#messages {
     box-sizing: border-box;
     margin: 0;

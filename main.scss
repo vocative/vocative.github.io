@@ -190,6 +190,16 @@ main{
 	&.unread #newmsgalert{
 		bottom: 10vh;
 	}
+  #pinned{
+    h2{
+      font-size: 1em;
+      margin: 0
+    }
+    position:fixed;
+    left: 1em;
+    top: 5em;
+    width: 15%;
+  }
 	ul#messages{
 		box-sizing: border-box;
 		margin:0;

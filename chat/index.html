@@ -42,11 +42,13 @@
 				<li><label>Room Title: <input type="text" class="matdes lightbg" placeholder="Some Class 101" ng-model="style.title"></label></li>
 				<li><label>Theme Color (<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value">css</a>): <input type="text" class="matdes lightbg" placeholder="deepskyblue" ng-model="style.bgcolor"></label></li>
 				<li><a ng-href="https://vocative.firebaseio.com/{{room | uppercase}}/messages.json">Download Chats</a> (you probably don't want this)</li>
-				<li><label>Lock: <input type="checkbox" ng-model="style.locked">
+				<li><label>Lock: <input type="checkbox" ng-model="style.locked"></label></li>
+        <li><label>Pinned message:<br><textarea style="width:70%" rows="10" ng-model="style.pinned"></textarea></label></li>
 			</ul>
 		</div>
 		<main>
 			<div id="smoothalerts"></div>
+      <div id="pinned" ng-show="style.pinned"><h2>PINNED MESSAGE</h2><div ng-bind-html="style.pinned"></div></div>
 			<ul id="messages">
 				<div id="msgwrap">
 					<li id="loadmsg" class="message" ng-hide="loaded">Loading</li>
