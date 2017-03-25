@@ -172,6 +172,8 @@ main {
     main #pinned h2 {
       font-size: 1em;
       margin: 0; }
+    main #pinned div {
+      white-space: pre-line; }
   main ul#messages {
     box-sizing: border-box;
     margin: 0;

@@ -199,6 +199,9 @@ main{
     left: 1em;
     top: 5em;
     width: 15%;
+    div{
+      white-space: pre-line;
+    }
   }
 	ul#messages{
 		box-sizing: border-box;
